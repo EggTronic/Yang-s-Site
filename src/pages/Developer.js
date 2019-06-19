@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, About, Resume, Portfolio, Testimonials, Contact, Footer } from '../components/Home/index.js';
+import { Header, About, Resume, Portfolio, Testimonials, Contact, Footer } from '../components/Developer/index.js';
 import resumeData from '../statics/resumeData.json';
 import './../css/default.css';
 import './../css/fonts.css';
@@ -7,7 +7,7 @@ import './../css/layout.css';
 import './../css/magnific-popup.css';
 import './../css/media-queries.css';
 
-export class Home extends Component {
+export class Developer extends Component {
   constructor(props) {
     super(props);
     this.state = {

@@ -61,12 +61,12 @@ export class Cover extends Component {
 
                 <div className='left'>
                     <h1 className="text">Producer</h1>
-                    <Link className='link' to={'/Home'}><button className='btn'></button></Link>
+                    <Link className='link' to={'/Producer'}><button className='btn'></button></Link>
                 </div>
                 <div className='right'>
                     <canvas ref="c" ></canvas>
                     <h1 className="text">Software Developer</h1>
-                    <Link className='link' to={'/Home'}><button className='btn'></button></Link>
+                    <Link className='link' to={'/Developer'}><button className='btn'></button></Link>
                 </div>
             </div>
         )
