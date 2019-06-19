@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Header, Footer } from '../components/Producer/index.js';
+import '../css/myStyle/producer.css';
 
 export class Producer extends Component {
     render() {
         return (
-            <div>
+            <div className='producer'>
                 Welcome EggTronic's Music Center
             </div>
         )

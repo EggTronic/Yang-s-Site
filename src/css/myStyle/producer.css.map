@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACN,gBAAgB,EAAE,sCAAsC;EACxD,iBAAiB,EAAE,SAAS;EAC5B,eAAe,EAAE,OAAO;EACxB,UAAU,EAAE,4BAA4B;EACxC,MAAM,EAAE,KAAK;CAChB;;AAED,AAAA,SAAS,AAAA,MAAM,CAAC;EACZ,eAAe,EAAE,SAAS;CAC7B",
+    "sources": [
+        "producer.scss"
+    ],
+    "names": [],
+    "file": "producer.css"
+}

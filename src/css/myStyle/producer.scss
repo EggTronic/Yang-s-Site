@@ -1,0 +1,11 @@
+.producer {
+    background-image: url('../../images/producer/kdbnb.jpg');
+    background-repeat: no-repeat;
+    background-size: 90% 90%;
+    transition: background-size 10s ease-out;
+    height: 100vh;
+}
+
+.producer:hover {
+    background-size: 290% 290%;
+}
