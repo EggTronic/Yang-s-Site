@@ -1,0 +1,149 @@
+{
+  "main": {
+    "name": "KDB NB",
+    "occupation": "Master Student at University of Melbourne",
+    "description": "Passion for learning, Passion for coding, Passion for music",
+    "image": "profilepic.jpg",
+    "bio": "Student and music fan who is professional in coding.",
+    "contactmessage": "Looking foward to hear from you.",
+    "email": "danliangchen@gmail.com",
+    "phone": "+61-0406139018",
+    "address": {
+      "street": "CBD",
+      "city": "Melbourne",
+      "state": "VIC",
+      "zip": "3000"
+    },
+    "website": "https://eggtronic.github.io.",
+    "resumedownload": "https://eggtronic.github.io.",
+    "social": [
+      {
+        "name": "facebook",
+        "url": "https://www.facebook.com/profile.php?id=100027517839124",
+        "className": "fa fa-facebook"
+      },
+      {
+        "name": "twitter",
+        "url": "https://twitter.com/TronicEgg",
+        "className": "fa fa-twitter"
+      },
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/%E6%B4%8B-%E8%AE%B8-78a411148/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "github",
+        "url": "http://github.com/EggTronic",
+        "className": "fa fa-github"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
+    "education": [
+      {
+        "school": "University of Melbourne",
+        "degree": "Masters of Software Engineering",
+        "graduated": "July 2020",
+        "description": "Main on software engineering, software development and cloud computing."
+      },
+      {
+        "school": "University of Liverpool",
+        "degree": "Bachelor - First Class Honours Degree of Software Development",
+        "graduated": "July 2017",
+        "description": "Main on software development and machine learning."
+      }
+    ],
+    "work": [
+      {
+        "company": "Nvidia",
+        "title": "Intern",
+        "years": "Jan 2018 - May 2018",
+        "description": "Data analysis."
+      },
+      {
+        "company": "pending",
+        "title": "pending",
+        "years": "pending",
+        "description": "pending."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Git",
+        "level": "80%"
+      },
+      {
+        "name": "OpenStack",
+        "level": "55%"
+      },
+      {
+        "name": "React",
+        "level": "70%"
+      },
+      {
+        "name": "CSS",
+        "level": "90%"
+      },
+      {
+        "name": "HTML5",
+        "level": "80%"
+      },
+      {
+        "name": "VueJs",
+        "level": "80%"
+      },
+      {
+        "name": "MongoDB",
+        "level": "80%"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": [
+      {
+        "title": "",
+        "category": "",
+        "image": "",
+        "url": ""
+      },
+      {
+        "title": "",
+        "category": "",
+        "image": "",
+        "url": ""
+      },
+      {
+        "title": "",
+        "category": "",
+        "image": "",
+        "url": ""
+      },
+      {
+        "title": "",
+        "category": "",
+        "image": "",
+        "url": ""
+      },
+      {
+        "title": "",
+        "category": "",
+        "image": "",
+        "url": ""
+      }
+    ]
+  },
+  "testimonials": {
+    "testimonials": [
+      {
+        "text": "Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
+        "user": "KDB"
+      },
+      {
+        "text": "That KDB must be one of the most brilliant developers I've ever met! It is amazing that nobody has hired him yet. Hey you, you should hire this guy, he may be fresh out of University and have zero on the job experience but I am confident that he will be one of your best developers in no time!",
+        "user": "KDB"
+      }
+    ]
+  }
+}
