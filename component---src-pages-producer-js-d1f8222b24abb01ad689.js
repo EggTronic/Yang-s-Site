@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{160:function(n,e,t){"use strict";t.r(e);var o=t(8),r=t.n(o),u=t(0),c=t.n(u);u.Component,u.Component;t.d(e,"Producer",function(){return i});var i=function(n){function e(){return n.apply(this,arguments)||this}return r()(e,n),e.prototype.render=function(){return c.a.createElement("div",null,"Welcome EggTronic's Music Center")},e}(u.Component);e.default=i}}]);
+//# sourceMappingURL=component---src-pages-producer-js-d1f8222b24abb01ad689.js.map
