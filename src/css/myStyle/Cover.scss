@@ -3,6 +3,25 @@ $white: rgba(255, 255, 255, 0.6);
 $btn-color-hover-left: rgba(255, 255, 255, 0.6);
 $btn-color-hover-right: rgba(255, 255, 255, 0.7);
 
+@media (max-width: 500px) {
+    .cover {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: 'right right''left left' !important;
+    }
+
+    .right .text {
+        font-size: 100%;
+    }
+
+    .left .text {
+        margin-top: 13% !important;
+        margin-left: 15% !important;
+        font-size: 100%;
+    }
+}
+
+
 .cover {
     display: grid;
     text-align: center;
@@ -11,7 +30,9 @@ $btn-color-hover-right: rgba(255, 255, 255, 0.7);
     grid-template-columns: 50% 50%;
     grid-template-areas: 'left right';
 
+
     .left {
+        margin: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -32,9 +53,11 @@ $btn-color-hover-right: rgba(255, 255, 255, 0.7);
         }
 
         .link {
-            height: 100vh;
+            height: 100%;
             display: inline-block;
             width: 100%;
+            z-index: 100 !important;
+            position: relative;
 
             .btn {
                 height: 100%;
@@ -60,11 +83,11 @@ $btn-color-hover-right: rgba(255, 255, 255, 0.7);
     }
 
     .right {
+        margin: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         grid-area: right;
-        background-color: $white;
         background-repeat: no-repeat;
         background-size: cover;
 
@@ -76,19 +99,19 @@ $btn-color-hover-right: rgba(255, 255, 255, 0.7);
         }
 
         .canvas {
-            height: 100vh;
+            position: fixed;
+            height: 100%;
             width: 100%;
             z-index: -1;
         }
 
         .link {
-            height: 100vh;
+            height: 100%;
             display: inline-block;
-            width: 50%;
-            position: fixed;
+            width: 100%;
 
             .btn {
-                height: 100vh;
+                height: 100%;
                 width: 100%;
                 background-color: $btn-color-hover-right;
                 transition: width 2s ease-out, background-color 2s ease-out;
