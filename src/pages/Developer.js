@@ -39,4 +39,4 @@ export class Developer extends Component {
   }
 }
 
-export default Home
+export default Developer
