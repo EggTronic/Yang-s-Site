@@ -1,7 +1,10 @@
 .producer {
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 'left right';
+    grid-auto-flow: row;
 
     .background {
         background-image: url('../../images/producer/eggtronic.png');
@@ -9,22 +12,65 @@
         background-size: auto 100vh;
         height: 100vh;
         width: 100vw;
-        position: absolute;
+        grid-area: left;
         z-index: -1;
     }
 
     .intro {
-        position: absolute;
         height: 100vh;
-        width: 100vw;
-        display: inline-block;
+        width: 50vw;
+        grid-area: right;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 33% 33% 33%;
+        grid-template-areas:
+            '1 2 3'
+            '4 5 6'
+            '7 8 9';
 
-        h1 {
-            color: azure;
-            position: absolute;
-            margin-left: 60vw;
-            margin-top: 50vh;
+        .grid-1 {
+            grid-area: 1;
         }
+
+        .grid-2 {
+            grid-area: 2;
+        }
+
+        .grid-3 {
+            grid-area: 3;
+        }
+
+        .grid-4 {
+            grid-area: 4;
+        }
+
+        .grid-5 {
+            grid-area: 5;
+
+            h1 {
+                color: azure;
+            }
+        }
+
+        .grid-6 {
+            grid-area: 6;
+
+        }
+
+        .grid-7 {
+            grid-area: 7;
+        }
+
+        .grid-8 {
+            grid-area: 8;
+        }
+
+        .grid-9 {
+            grid-area: 9;
+        }
+
 
     }
 }
