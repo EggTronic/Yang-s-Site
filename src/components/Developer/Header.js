@@ -4,6 +4,13 @@ class Header extends Component {
   render() {
 
     if (this.props.data) {
+      var header = this.props.data.header;
+      var home = header.home;
+      var about = header.about;
+      var resume = header.resume;
+      var work = header.work;
+      var testimonial = header.testimonial;
+      var contact = header.contact;
       var name = this.props.data.name;
       var occupation = this.props.data.occupation;
       var description = this.props.data.description;
@@ -22,12 +29,12 @@ class Header extends Component {
           <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
 
           <ul id="nav" className="nav">
-            <li className="current"><a className="smoothscroll" href="#home">Home</a></li>
-            <li><a className="smoothscroll" href="#about">About</a></li>
-            <li><a className="smoothscroll" href="#resume">Resume</a></li>
-            <li><a className="smoothscroll" href="#portfolio">Works</a></li>
-            <li><a className="smoothscroll" href="#testimonials">Testimonials</a></li>
-            <li><a className="smoothscroll" href="#contact">Contact</a></li>
+            <li className="current"><a className="smoothscroll" href="#home">{home}</a></li>
+            <li><a className="smoothscroll" href="#about">{about}</a></li>
+            <li><a className="smoothscroll" href="#resume">{resume}</a></li>
+            <li><a className="smoothscroll" href="#portfolio">{work}</a></li>
+            <li><a className="smoothscroll" href="#testimonials">{testimonial}</a></li>
+            <li><a className="smoothscroll" href="#contact">{contact}</a></li>
           </ul>
 
         </nav>

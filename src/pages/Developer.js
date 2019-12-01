@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Header, About, Resume, Portfolio, Testimonials, Contact, Footer } from '../components/Developer/index.js';
-import resumeData from '../statics/resumeData.json';
+import resumeData from '../statics/resumeData_cn.json';
 import './../css/default.css';
 import './../css/fonts.css';
 import './../css/layout.css';
