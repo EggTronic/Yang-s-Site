@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { visuals } from '../../assets/js/visuals';
 import reverie from '../../assets/music/reverie.mp3';
-
 
 const Icon = styled.i`
   color: white;
@@ -55,7 +55,7 @@ const rotate = keyframes`
 
 const AudioWrapper = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   width: 300px;
   top: 30px;
   right: 20px;
@@ -109,28 +109,35 @@ const Bar = styled.input`
   }
 `
 const ProgressBar = styled(Bar)`
-
 `;
 
 const VolumeBar = styled(Bar)`
-
 `;
-
 
 const SliderWrapper = styled.div`
   text-align: right;
   margin-top: 10px;
 `;
 
+const MyCanvas = styled.canvas`
+  height: 64px;
+  width: 200px;
+  position: fixed;
+  right: 70px;
+  top: 0;
+`;
+
 function AudioPlayer() {
   const audio = useRef(null);
-  const [playing, setPlaying] = useState(false);
+  const canvas = useRef(null);
+  const [playing, setPlaying] = useState(true);
   const [time, setTime] = useState('00:00');
   const [position, setPosition] = useState(0);
   const [volume, setVolume] = useState(50);
 
   useEffect(() => {
     audio.current.volume = 0.5;
+    audio.current.play();
     audio.current.onended = () => {
       setPosition(0);
       setPlaying(false);
@@ -149,6 +156,45 @@ function AudioPlayer() {
 
       setTime(minutes + ":" + seconds);
     }, 500);
+
+    if (canvas.current && audio.current) {
+      const canvasCtx = canvas.current.getContext('2d');
+      const audioElm = audio.current;
+      let audioCtx = null;
+      try {
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new window.AudioContext();
+      } catch (e) {
+        console.info('Web Audio API is not supported.', e);
+        return;
+      }
+      const analyser = audioCtx.createAnalyser();
+      analyser.smoothingTimeConstant = 0.6;
+      analyser.fftSize = 512;
+      const frequencyData = new Uint8Array(analyser.frequencyBinCount);
+      const sourceNode = audioCtx.createMediaElementSource(audioElm);
+      sourceNode.connect(analyser);
+      sourceNode.connect(audioCtx.destination);
+
+      const draw = (visuals, canvas, audioElm, canvasCtx, frequencyData) => {
+        for (let i = 0; i < visuals.length; i++) {
+          visuals[i](audioElm, canvas, canvasCtx, frequencyData);
+        }
+      }
+
+      const renderFrame = () => {
+        setTimeout(() => {
+          if (!canvasCtx) return;
+          requestAnimationFrame(renderFrame);
+        }, 1000 / 60);
+
+        canvasCtx.clearRect(0, 0, canvas.current.width, canvas.current.height);
+        analyser.getByteFrequencyData(frequencyData);
+        draw(visuals, canvas.current, audioElm, canvasCtx, frequencyData);
+      }
+
+      renderFrame();
+    }
 
     return () => clearInterval(progressUpdater);
   }, []);
@@ -178,7 +224,7 @@ function AudioPlayer() {
 
   return (
     <AudioWrapper>
-      <audio ref={audio}>
+      <audio id='audio' ref={audio}>
         <source src={reverie} type="audio/mpeg" />
       </audio>
 
@@ -211,7 +257,7 @@ function AudioPlayer() {
           <AudioBtn className="fas fa-volume-up" />
         </SliderWrapper>
       </AudioControlWrapper>
-
+      <MyCanvas ref={canvas}></MyCanvas>
     </AudioWrapper>
   );
 }

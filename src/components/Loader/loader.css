@@ -8,6 +8,7 @@
   position: fixed;
   top:0;
   left:-7px;
+  z-index: -1;
 }
 
 .leo {
@@ -24,7 +25,7 @@
   }
 
   to {
-    transform: rotate3d(0deg);
+    transform: rotate3d(0, 0, 0, 0deg);
   }
 }
 

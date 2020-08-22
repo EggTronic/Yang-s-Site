@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const AboutPageWrapper = styled.div`
   position: absolute;
   box-sizing: border-box;
-  min-height: 80vh;
+  min-height: calc(100vh - 164px);
   width: 90vw;
-  top: 130px;
+  top: 100px;
   background: rgba(111,111,111,0.4);
 `;
 

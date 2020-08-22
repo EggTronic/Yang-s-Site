@@ -9,6 +9,7 @@ const Header = styled.header`
   height: 64px;
   width: 100%;
   position: fixed;
+  z-index:1;
 `;
 
 const Logo = styled.img`
@@ -16,8 +17,9 @@ const Logo = styled.img`
   height: 64px;
   border-radius: 50%;
   transition: all 1s;
+  transform: scale(0.7,0.7);
   &:hover{
-    transform: scale(1.1);
+    transform: scale(0.9);
   }
 `;
 

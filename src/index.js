@@ -153,6 +153,7 @@ WarpSpeed.prototype = {
 WarpSpeed.destroy = WarpSpeed.prototype.destroy;
 
 window.WarpSpeedCtx = new WarpSpeed("wrapspeed");
+window.WarpSpeedCtx.SPEED = 15;
 
 ReactDOM.render(
   <App />,
