@@ -1,0 +1,59 @@
+.router-wrapper {
+  position: absolute;
+  width: 90vw;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.01, 0.01);
+  }
+
+  90% {
+    opacity: 0.02;
+    transform: scale(0.1, 0.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    transform: scale(1.1,1.1);
+  }
+
+  50% {
+    transform: scale(1.1,1.1);
+  }
+
+  0% {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+}
+
+@keyframes flash {
+  100% {}
+  10% {
+    background: rgba(111,111,111,0.8);
+  }
+  0% {
+    background: rgba(166,166,166,1);
+  }
+}
+
+.in-exit {
+  animation: fadeOut 1s ease-out;
+}
+
+.in-enter {
+  animation: fadeIn 1s ease-out;
+}
+
+.in-enter-done {
+  animation: flash 1s ease-out;
+}

@@ -1,0 +1,62 @@
+.spinner-box {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: fixed;
+  top:0;
+  left:-7px;
+}
+
+.leo {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+@keyframes spin3D {
+  from {
+    transform: rotate3d(.5, .5, .5, 360deg);
+  }
+
+  to {
+    transform: rotate3d(0deg);
+  }
+}
+
+.blue-orbit {
+  width: 165px;
+  height: 165px;
+  border: 1px solid white;
+  animation: spin3D 3s linear .2s infinite;
+}
+
+.green-orbit {
+  width: 120px;
+  height: 120px;
+  border: 1px solid white;
+  animation: spin3D 2s linear 0s infinite;
+}
+
+.white-orbit {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #ffffff;
+  animation: spin3D 10s linear 0s infinite;
+}
+
+.w1 {
+  animation: spin3D 5s linear 0s infinite;
+}
+
+.w2 {
+  animation: spin3D 7s linear 0s infinite;
+}
+
+.w3 {
+  animation: spin3D 11s linear 0s infinite;
+}

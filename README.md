@@ -1,15 +1,12 @@
-## 🚀 To Do List
+## License
+Copyright (C) 2020 EggTronic
 
-1. [x] Cover Page Layout Design
-2. [x] Cover Matrix Rain Effect 
-3. [x] Cover Css Animation
-4. [x] Cover Auto Adjust
-5. [ ] Cover Audio Player
-6. [ ] Developer Page Refine
-7. [ ] Developer Page Content
-8. [ ] Developer Page Animation
-9. [ ] Producer Page Design
-10. [ ] Producer Content Design
-11. [ ] Producer Page Component Implementation
-12. [ ] Producer Page Animation
+You can redistribute it and/or modify it under the terms of 
+the GNU Lesser General Public License as published by the Free 
+Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
