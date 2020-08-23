@@ -1,3 +1,13 @@
+## Demo
+https://eggtronic.github.io/
+
+## ToDo
+- [ ] beatProvider
+- [ ] useMouseLocation
+- [ ] audio visualization inside cube
+- [ ] themeProvider
+- [ ] home page text automation
+
 ## License
 Copyright (C) 2020 EggTronic
 
