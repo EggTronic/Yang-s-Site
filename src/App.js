@@ -9,8 +9,8 @@ import {
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 import Navbar from './components/Navbar/Navbar';
 import AudioPlayer from './components/AudioPlayer/AudioPlayer';
-import routers from "./pages/router/index";
-
+import Sider from './components/Sider/Sider';
+import routers from './pages/router/index';
 import './App.css';
 
 const AppWrapper = styled.div`
@@ -60,6 +60,7 @@ function App() {
         <Navbar />
         <Routes />
       </Router>
+      <Sider />
     </AppWrapper>
   );
 }

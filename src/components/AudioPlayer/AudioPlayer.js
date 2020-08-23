@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { visuals } from '../../assets/js/visuals';
 import reverie from '../../assets/music/reverie.mp3';
+import reverieOrigin from '../../assets/music/reverie-origin.mp3';
 
 const Icon = styled.i`
   color: white;
@@ -183,11 +184,11 @@ function AudioPlayer() {
       }
 
       const renderFrame = () => {
+        if (!canvas.current) return;
         setTimeout(() => {
-          if (!canvasCtx) return;
+          if (!canvas.current) return;
           requestAnimationFrame(renderFrame);
         }, 1000 / 60);
-
         canvasCtx.clearRect(0, 0, canvas.current.width, canvas.current.height);
         analyser.getByteFrequencyData(frequencyData);
         draw(visuals, canvas.current, audioElm, canvasCtx, frequencyData);
@@ -225,6 +226,7 @@ function AudioPlayer() {
   return (
     <AudioWrapper>
       <audio id='audio' ref={audio}>
+        <source src={reverieOrigin} type="audio/mpeg" />
         <source src={reverie} type="audio/mpeg" />
       </audio>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Cloud from '../../components/Cloud/Cloud';
 
 const MusicPageWrapper = styled.div`
   position: absolute;
@@ -13,6 +14,7 @@ const MusicPageWrapper = styled.div`
 function MusicPage() {
   return (
     <MusicPageWrapper>
+      <Cloud />
       Music
     </MusicPageWrapper>
   );
