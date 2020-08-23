@@ -128,7 +128,7 @@ const MyCanvas = styled.canvas`
   top: 0;
 `;
 
-function AudioPlayer() {
+function AudioPlayer({ setFrequency }) {
   const audio = useRef(null);
   const canvas = useRef(null);
   const [playing, setPlaying] = useState(true);
@@ -191,6 +191,7 @@ function AudioPlayer() {
         }, 1000 / 60);
         canvasCtx.clearRect(0, 0, canvas.current.width, canvas.current.height);
         analyser.getByteFrequencyData(frequencyData);
+        setFrequency(frequencyData);
         draw(visuals, canvas.current, audioElm, canvasCtx, frequencyData);
       }
 
@@ -198,7 +199,7 @@ function AudioPlayer() {
     }
 
     return () => clearInterval(progressUpdater);
-  }, []);
+  }, [setFrequency]);
 
   const onTogglePlay = () => {
     if (!audio.current) return;

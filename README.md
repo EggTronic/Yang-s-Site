@@ -7,6 +7,7 @@ https://eggtronic.github.io/
 - [ ] audio visualization inside cube
 - [ ] themeProvider
 - [ ] home page text automation
+- [ ] starwar zone
 
 ## License
 Copyright (C) 2020 EggTronic

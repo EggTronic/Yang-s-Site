@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -6,7 +6,8 @@ import {
   Route,
   withRouter
 } from "react-router-dom";
-import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { FrequencyContext } from './assets/const';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Navbar from './components/Navbar/Navbar';
 import AudioPlayer from './components/AudioPlayer/AudioPlayer';
 import Sider from './components/Sider/Sider';
@@ -52,14 +53,20 @@ const Routes = withRouter(({ location }) => (
 )
 );
 
+
 function App() {
+  const [frequency, setFrequency] = useState(null);
+
   return (
     <AppWrapper>
-      <AudioPlayer />
+      <AudioPlayer setFrequency={setFrequency} />
       <Router>
         <Navbar />
-        <Routes />
+        <FrequencyContext.Provider value={{ freq: frequency }}>
+          <Routes />
+        </FrequencyContext.Provider>
       </Router>
+
       <Sider />
     </AppWrapper>
   );
