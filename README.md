@@ -1,5 +1,5 @@
-## Demo
-https://eggtronic.github.io/
+## Demo [Go ~](https://eggtronic.github.io/)
+![](./SAMPLES/demo.gif)
 
 ## ToDo
 - [ ] beatProvider
