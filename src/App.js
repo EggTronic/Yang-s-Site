@@ -66,7 +66,6 @@ function App() {
           <Routes />
         </FrequencyContext.Provider>
       </Router>
-
       <Sider />
     </AppWrapper>
   );

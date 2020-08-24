@@ -77,8 +77,7 @@ const Side = styled.img`
   min-width: 400px;
   transition: all 0.4s ease-in-out;
   background: rgba(0,0,0,0.1);
-  border-radius: 3%;
-  border: 3px solid white;
+  border: 1px solid rgba(255,255,255,0.1);
 `;
 
 
