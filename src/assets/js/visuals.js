@@ -16,9 +16,9 @@ const renderLounge = (canvas, canvasCtx, frequencyData,
 
   canvasCtx.fillStyle = barColor;
   for (let i = 0; i < barNum; i++) {
-    let amplitude = frequencyData[i * freqJump];
+    let amplitude = i > barNum / 2 ? frequencyData[(barNum - i) * freqJump] : frequencyData[i * freqJump];
     let x = i * 10;
-    let y = doubleSide? amplitude / 5 - barHeight : 0;
+    let y = doubleSide ? amplitude / 5 - barHeight : 0;
     let w = barWidth;
     let h = - barHeight * amplitude / 10;
 

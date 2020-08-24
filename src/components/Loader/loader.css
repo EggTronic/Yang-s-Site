@@ -5,9 +5,9 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  position: fixed;
-  top:0;
-  left:-7px;
+  position: absolute;
+  top:-8px;
+  left:-8px;
   z-index: -1;
 }
 

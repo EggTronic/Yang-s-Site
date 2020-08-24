@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useRef, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FrequencyContext } from '../../assets/const';
 import { visuals } from '../../assets/js/visuals';
-import logoTransparentR from '../../assets/images/logo-transparent-reverse.png';
 import logo2Transparent from '../../assets/images/logo2-transparent.png';
 
 const Rotate3d = keyframes`
@@ -113,8 +112,8 @@ function Cube() {
       barHeight: 4,
       barSpacing: 20,
       barColor: '#fff',
-      barNum: 15,
-      offsetX: -130,
+      barNum: 11,
+      offsetX: -160,
       offsetY: 0,
       doubleSide: true
     }
@@ -138,9 +137,9 @@ function Cube() {
     <Wrapper>
 
       <Inner>
-        <Side src={logoTransparentR} ref={s1} opacity={.8}/>
+        <Side src={logo2Transparent} ref={s1} opacity={1}/>
         <Side src={logo2Transparent} ref={s2} opacity={1}/>
-        <Side src={logoTransparentR} ref={s3} opacity={.8}/>
+        <Side src={logo2Transparent} ref={s3} opacity={1}/>
         <Side src={logo2Transparent} ref={s4} opacity={1}/>
         <Side src={logo2Transparent} ref={s5} opacity={1}/>
         <Side src={logo2Transparent} ref={s6} opacity={1}/>
