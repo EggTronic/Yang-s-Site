@@ -177,9 +177,19 @@ function AudioPlayer({ setFrequency }) {
       sourceNode.connect(analyser);
       sourceNode.connect(audioCtx.destination);
 
-      const draw = (visuals, canvas, audioElm, canvasCtx, frequencyData) => {
+      const options = {
+        barWidth: 10,
+        barHeight: 3,
+        barSpacing: 10,
+        barColor: '#fff',
+        barNum: 15,
+        offsetX: -160,
+        offsetY: 50
+      }
+
+      const draw = (visuals, canvas, canvasCtx, frequencyData) => {
         for (let i = 0; i < visuals.length; i++) {
-          visuals[i](audioElm, canvas, canvasCtx, frequencyData);
+          visuals[i](canvas, canvasCtx, frequencyData, options);
         }
       }
 
@@ -192,7 +202,7 @@ function AudioPlayer({ setFrequency }) {
         canvasCtx.clearRect(0, 0, canvas.current.width, canvas.current.height);
         analyser.getByteFrequencyData(frequencyData);
         setFrequency(frequencyData);
-        draw(visuals, canvas.current, audioElm, canvasCtx, frequencyData);
+        draw(visuals, canvas.current, canvasCtx, frequencyData);
       }
 
       renderFrame();

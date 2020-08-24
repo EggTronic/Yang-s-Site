@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Parallax from 'parallax-js';
 import Card from '../../components/Card/Card';
 import Cube from '../../components/Cube/Cube';
-import logo from '../../assets/images/logo-transparent.png';
+import logo from '../../assets/images/logo2-transparent.png';
 
 const HomePageWrapper = styled.div`
   position: absolute;
