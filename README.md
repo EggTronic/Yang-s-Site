@@ -2,12 +2,9 @@
 ![](./SAMPLES/demo.gif)
 
 ## ToDo
-- [ ] beatProvider
-- [ ] useMouseLocation
-- [ ] audio visualization inside cube
 - [ ] themeProvider
-- [ ] home page text automation
 - [ ] starwar zone
+- [ ] eggtap
 
 ## License
 Copyright (C) 2020 EggTronic
