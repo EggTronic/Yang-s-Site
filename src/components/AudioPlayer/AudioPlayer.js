@@ -185,7 +185,7 @@ function AudioPlayer({ setFrequency }) {
         barNum: 15,
         offsetX: -160,
         offsetY: 50
-      }
+      };
 
       const draw = (visuals, canvas, canvasCtx, frequencyData) => {
         for (let i = 0; i < visuals.length; i++) {

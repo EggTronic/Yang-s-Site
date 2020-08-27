@@ -54,15 +54,12 @@ const Inner = styled.div`
     transform: rotateX(-90deg) translateZ(max(10vw, 200px));
   }
   canvas:nth-child(7){
-    transform: rotateY(0deg);
-  }
-  canvas:nth-child(8){
     transform: rotateY(90deg);
   }
-  canvas:nth-child(9){
+  canvas:nth-child(8){
     transform: rotateX(90deg);
   }
-  canvas:nth-child(10){
+  canvas:nth-child(9){
     transform: rotateZ(90deg);
   }
 `;
@@ -92,7 +89,6 @@ function Cube() {
   const c1 = useRef(null);
   const c2 = useRef(null);
   const c3 = useRef(null);
-  const c4 = useRef(null);
 
   useEffect(() => {
     if (!c1.current) return;
@@ -102,17 +98,18 @@ function Cube() {
         visuals[i](canvas, canvasCtx, frequencyData, options);
       }
     }
+
     const c1Ctx = c1.current.getContext('2d');
     const c2Ctx = c2.current.getContext('2d');
     const c3Ctx = c3.current.getContext('2d');
-    const c4Ctx = c4.current.getContext('2d');
+
     const options = {
       barWidth: 10,
       barHeight: 4,
       barSpacing: 20,
       barColor: '#fff',
       barNum: 11,
-      offsetX: -160,
+      offsetX: -155,
       offsetY: 0,
       doubleSide: true
     }
@@ -122,11 +119,11 @@ function Cube() {
       c1Ctx.clearRect(0, 0, c1.current.width, c1.current.height);
       c2Ctx.clearRect(0, 0, c2.current.width, c2.current.height);
       c3Ctx.clearRect(0, 0, c3.current.width, c3.current.height);
-      c4Ctx.clearRect(0, 0, c4.current.width, c4.current.height);
+
       draw(visuals, c1.current, c1Ctx, freqData, options);
-      draw(visuals, c2.current, c2Ctx, freqData, {...options, barColor: '#fff'});
-      draw(visuals, c3.current, c3Ctx, freqData, {...options, barColor: '#fff'});
-      draw(visuals, c4.current, c4Ctx, freqData, options);
+      draw(visuals, c2.current, c2Ctx, freqData, options);
+      draw(visuals, c3.current, c3Ctx, freqData, options);
+      
       setFreqData(frequency.freq ? frequency.freq : undefined);
     }, 1000 / 60);
     return () => clearInterval(it);
@@ -134,7 +131,6 @@ function Cube() {
 
   return (
     <Wrapper>
-
       <Inner>
         <Side src={logo2Transparent} ref={s1} opacity={1}/>
         <Side src={logo2Transparent} ref={s2} opacity={1}/>
@@ -145,7 +141,6 @@ function Cube() {
         <MyCanvas ref={c1}></MyCanvas>
         <MyCanvas ref={c2}></MyCanvas>
         <MyCanvas ref={c3}></MyCanvas>
-        <MyCanvas ref={c4}></MyCanvas>
       </Inner>
     </Wrapper>
   );

@@ -15,7 +15,7 @@ function MusicPage() {
   return (
     <MusicPageWrapper>
       <Cloud />
-      Music
+      Music;
     </MusicPageWrapper>
   );
 }

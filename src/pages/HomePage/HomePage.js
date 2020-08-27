@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Parallax from 'parallax-js';
+import Typist from 'react-typist';
 import Card from '../../components/Card/Card';
 import Cube from '../../components/Cube/Cube';
 import logo from '../../assets/images/logo2-transparent.png';
@@ -15,7 +16,15 @@ const HomePageWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  overflow: hidden;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+  /* Optional: show position indicator in red */
+  &::-webkit-scrollbar-thumb {
+    background: #FF0000;
+  }
 `;
 
 const LeftWrapper = styled.div`
@@ -32,6 +41,8 @@ const LeftWrapper = styled.div`
   }
   h2{
     margin:30px;
+    line-height: 30px;
+    font-size: calc(10px + .5vw);
   }
 `;
 
@@ -71,7 +82,26 @@ function HomePage() {
         minWidth={'600px'}
       />
       <LeftWrapper ref={scene1}>
-        <h2 data-depth="0.05">Hello, this is EggTronic</h2>
+        <div data-depth="0.06">
+          <Typist
+            avgTypingDelay={80}
+            cursor={{ show: false }}
+          >
+            <h2>Hello, this is EggTronic.</h2>
+            <Typist.Backspace count={0} delay={500} />
+            <h2 data-depth="0.05">I am a Full Stack Web Engineer.</h2>
+            <Typist.Backspace count={0} delay={500} />
+            <h2 data-depth="0.05">I love music.</h2>
+            <Typist.Backspace count={13} delay={500} />
+            <h2 data-depth="0.05">I create music.</h2>
+            <Typist.Backspace count={15} delay={500} />
+            <h2 data-depth="0.05">I create fancy webs!</h2>
+            <Typist.Backspace count={20} delay={500} />
+            <h2 data-depth="0.05">I am creative and passionate.</h2>
+            <Typist.Backspace count={100} delay={500} />
+            <h2 data-depth="0.05">Nice to meet you, my friend!</h2>
+          </Typist>
+        </div>
       </LeftWrapper>
       <RightWrapper ref={scene2}>
         <div data-depth="0.5" >
