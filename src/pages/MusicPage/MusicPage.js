@@ -8,6 +8,15 @@ const MusicPageWrapper = styled.div`
   width: 90vw;
   top: 100px;
   background: rgba(111,111,111,0.4);
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+  /* Optional: show position indicator in red */
+  &::-webkit-scrollbar-thumb {
+    background: #FF0000;
+  }
 `;
 
 function MusicPage() {
