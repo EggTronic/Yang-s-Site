@@ -1,8 +1,9 @@
 /* eslint-disable */
 
-import * as PIXI from 'pixi.js';
+window.PIXI = PIXI;
+
 import pixiSound from 'pixi-sound';
-import pixiDisplay from 'pixi-layers';
+import 'pixi-layers';
 import '@pixi/graphics-extras';
 import { gsap } from 'gsap';
 import { PixiPlugin } from 'gsap/PixiPlugin';
@@ -61,20 +62,23 @@ export default class EggTap {
   _initView() {
     this.appWrapper.appendChild(this.app.view);
 
-    this.topGroup = new pixiDisplay.display.DisplayGroup(1, false);
-    this.midGroup = new pixiDisplay.display.DisplayGroup(0, false);
-    this.botGroup = new pixiDisplay.display.DisplayGroup(-1, false);
+    this.app.stage = new PIXI.display.Stage();
+    this.app.stage.sortableChildren = true;
 
-    this.app.stage.addChild(new pixiDisplay.display.Layer(this.topGroup));
-    this.app.stage.addChild(new pixiDisplay.display.Layer(this.midGroup));
-    this.app.stage.addChild(new pixiDisplay.display.Layer(this.botGroup));
+    this.topGroup = new PIXI.display.Group(2, false);
+    this.midGroup = new PIXI.display.Group(1, false);
+    this.botGroup = new PIXI.display.Group(-1, false);
+
+    this.app.stage.addChild(new PIXI.display.Layer(this.topGroup));
+    this.app.stage.addChild(new PIXI.display.Layer(this.midGroup));
+    this.app.stage.addChild(new PIXI.display.Layer(this.botGroup));
   }
 
   _initBackground() {
     const initialBackground = new PIXI.Graphics()
       .beginFill(this.colors[0])
       .drawRegularPolygon(0, 0, 2 * Math.max(this.app.screen.width, this.app.screen.height), 4, 0);
-    initialBackground.displayGroup = this.botLayer;
+    initialBackground.displayGroup = this.botGroup;
     this.app.stage.addChild(initialBackground)
   }
 
@@ -117,8 +121,9 @@ export default class EggTap {
     for (let r = 0; r < row; r++) {
       for (let c = 0; c < col; c++) {
         const tapper = new PIXI.Graphics()
-          .beginFill(0x000000, 1)
+          .beginFill(0xffffff, 1)
           .drawRect(width * c, height * r, width, height);
+        gsap.to(tapper, { duration: 0, pixi: { alpha: 0 } });
         tapper.parentGroup = this.topGroup;
         tapper.interactive = true;
         tapper.buttonMode = true;
@@ -130,8 +135,8 @@ export default class EggTap {
           this.currentColor++;
           this.animations[(r + c) % 2](this.app, this.midGroup, PIXI, gsap, colors, this.currentColor);
           const tl2 = gsap.timeline();
-          tl2.to(tapper, { duration: 1, pixi: { fillColor: '0xffffff', alpha: 1 } });
-          tl2.to(tapper, { duration: 1, pixi: { alpha: 0 } });
+          tl2.to(tapper, { duration: .1, pixi: { fillColor: '0xffffff', alpha: 1 } });
+          tl2.to(tapper, { duration: .6, pixi: { alpha: 0 } });
         }.bind(this);
         // Add it to the stage
         this.tappers.push(tapper);
@@ -160,7 +165,7 @@ export default class EggTap {
       .beginFill(this.colors[seed], 1)
       .drawRegularPolygon(...polyPts);
     bg.seed = seed;
-    bg.parentGroup = this.botGroup;
+    bg.parentGroup = this.midGroup;
 
     this.currentBackGround = bg;
     const tl = gsap.timeline();

@@ -4,8 +4,8 @@ const a1 = (app, group, PIXI, gsap, colors, currentColor) => {
   const shape = new PIXI.Graphics()
     .beginFill(currentColor)
     .drawRegularPolygon(...polyPts);
-  shape.x = app.stage.screen.width / 2;
-  shape.y = app.stage.screen.height / 2;
+  shape.x = app.screen.width / 2;
+  shape.y = app.screen.height / 2;
   shape.parentGroup = group;
 
   const tl1 = gsap.timeline();
@@ -33,16 +33,16 @@ const a2 = (app, group, PIXI, gsap, colors, currentColor) => {
     const shape = new PIXI.Graphics()
       .beginFill(currentColor)
       .drawRegularPolygon(...polyPts);
-    shape.x = app.stage.screen.width / 2;
-    shape.y = app.stage.screen.height / 2;
+    shape.x = app.screen.width / 2;
+    shape.y = app.screen.height / 2;
     shape.parentGroup = group;
-    
+
     const tl1 = gsap.timeline();
     if (currentColor > colors.length - 1) currentColor %= colors.length;
     tl1.to(shape, {
       pixi: {
-        x: Math.random() * app.stage.screen.width,
-        y: Math.random() * app.stage.screen.height,
+        x: Math.random() * app.screen.width,
+        y: Math.random() * app.screen.height,
         scale: 20,
         rotation: Math.random() * 360,
         fillColor: colors[currentColor],
