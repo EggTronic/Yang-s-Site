@@ -138,7 +138,7 @@ function AudioPlayer({ setFrequency }) {
 
   useEffect(() => {
     audio.current.volume = 0.5;
-    // audio.current.play();
+    audio.current.play();
     audio.current.onended = () => {
       setPosition(0);
       setPlaying(false);
@@ -197,6 +197,11 @@ function AudioPlayer({ setFrequency }) {
         if (!canvas.current) return;
         setTimeout(() => {
           if (!canvas.current) return;
+          if (audio.current.paused && !audio.current.readyState !== 4) { 
+            setPlaying(false);
+          } else {
+            setPlaying(true);
+          };
           requestAnimationFrame(renderFrame);
         }, 1000 / 60);
         canvasCtx.clearRect(0, 0, canvas.current.width, canvas.current.height);

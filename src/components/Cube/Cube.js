@@ -78,7 +78,7 @@ const Side = styled.img`
 
 function Cube() {
   const frequency = useContext(FrequencyContext);
-  const [freqData, setFreqData] = useState(frequency.freq ? frequency.freq : undefined);
+  const [freqData, setFreqData] = useState(frequency ? frequency : undefined);
 
   const s1 = useRef(null);
   const s2 = useRef(null);
@@ -124,7 +124,7 @@ function Cube() {
       draw(visuals, c2.current, c2Ctx, freqData, options);
       draw(visuals, c3.current, c3Ctx, freqData, options);
       
-      setFreqData(frequency.freq ? frequency.freq : undefined);
+      setFreqData(frequency ? frequency : undefined);
     }, 1000 / 60);
     return () => clearInterval(it);
   });

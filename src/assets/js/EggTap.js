@@ -8,7 +8,8 @@ import '@pixi/graphics-extras';
 import { gsap } from 'gsap';
 import { PixiPlugin } from 'gsap/PixiPlugin';
 import { a1, a2 } from './Animation';
-import snare from './audios/s.wav';
+import music from './audios/warmspace_ins.mp3';
+import { audioSlices } from './audios/index';
 
 export const colors = [
   0x88CCCC,
@@ -38,6 +39,8 @@ export default class EggTap {
     this.currentBackGround = null;
     this.lastBackGround = null;
     this.audios = null;
+    this.currentTarget = null;
+    this.isMouseDown = false;
     this._init();
   }
 
@@ -45,8 +48,7 @@ export default class EggTap {
     this._initApp();
     this._initView();
     this._initAutoResize();
-    await this._initAudios();
-    this._initTaps();
+    this._initAudios();
     this._initBackground();
   }
 
@@ -57,6 +59,14 @@ export default class EggTap {
     });
     gsap.registerPlugin(PixiPlugin);
     PixiPlugin.registerPIXI(PIXI);
+
+    // event
+    this.appWrapper.addEventListener('mousedown', function () {
+      this.isMouseDown = true;
+    }.bind(this))
+    this.appWrapper.addEventListener('mouseup', function () {
+      this.isMouseDown = false;
+    }.bind(this))
   }
 
   _initView() {
@@ -69,9 +79,13 @@ export default class EggTap {
     this.midGroup = new PIXI.display.Group(1, false);
     this.botGroup = new PIXI.display.Group(-1, false);
 
-    this.app.stage.addChild(new PIXI.display.Layer(this.topGroup));
-    this.app.stage.addChild(new PIXI.display.Layer(this.midGroup));
-    this.app.stage.addChild(new PIXI.display.Layer(this.botGroup));
+    this.topLayer = new PIXI.display.Layer(this.topGroup);
+    this.midLayer = new PIXI.display.Layer(this.midGroup);
+    this.botLayer = new PIXI.display.Layer(this.botGroup);
+
+    this.app.stage.addChild(this.topLayer);
+    this.app.stage.addChild(this.midLayer);
+    this.app.stage.addChild(this.botLayer);
   }
 
   _initBackground() {
@@ -109,7 +123,7 @@ export default class EggTap {
     resize.bind(this)();
   }
 
-  _initTaps(mode) {
+  _initTaps(mode, resources) {
     let row = 4, col = 8;
     if (mode === 'vertical') {
       row = 8;
@@ -128,16 +142,24 @@ export default class EggTap {
         tapper.interactive = true;
         tapper.buttonMode = true;
         tapper.hitArea = new PIXI.Rectangle(width * c, height * r, width, height);
-        tapper.click = function (e) {
-          // console.log(r, c);
+
+        const draw = function (isClick, e) {
+          if (!this.isMouseDown && !isClick) return;
+          const target = 'k' + (r * col + c + 1);
+          if (this.currentTarget === target && !isClick) return;
+          this.currentTarget = target;
+
           this._drawBackground();
-          pixiSound.play('snare');
+          resources[target].sound.play();
           this.currentColor++;
           this.animations[(r + c) % 2](this.app, this.midGroup, PIXI, gsap, colors, this.currentColor);
           const tl2 = gsap.timeline();
           tl2.to(tapper, { duration: .1, pixi: { fillColor: '0xffffff', alpha: 1 } });
           tl2.to(tapper, { duration: .6, pixi: { alpha: 0 } });
         }.bind(this);
+
+        tapper.on('mouseover', (e) => draw(false, e));
+        tapper.on('mousedown', (e) => draw(true, e));
         // Add it to the stage
         this.tappers.push(tapper);
         this.app.stage.addChild(tapper);
@@ -185,6 +207,28 @@ export default class EggTap {
   }
 
   async _initAudios() {
-    await pixiSound.add('snare', snare);
+    PIXI.Loader.shared.add('bgm', music);
+
+    for (let name in audioSlices) {
+      PIXI.Loader.shared.add(name, audioSlices[name]);
+    }
+    PIXI.Loader.shared.load((loader, resources) => {
+      resources;
+      resources.bgm.sound.loop = true;
+      resources.bgm.sound.play();
+      this._initTaps('horizontal', resources);
+    });
+  }
+
+  clear() {
+    PIXI.Loader.shared.reset();
+    pixiSound.removeAll();
+    for (let child of this.app.stage.children) {
+      child.off('mouseover');
+      child.off('mouseup');
+      child.off('mousedown');
+    }
+    // this.appWrapper.removeEventListener('mouseup');
+    // this.appWrapper.removeEventListener('mousedown');
   }
 }

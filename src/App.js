@@ -62,7 +62,7 @@ function App() {
       <AudioPlayer setFrequency={setFrequency} />
       <Router>
         <Navbar />
-        <FrequencyContext.Provider value={{ freq: frequency }}>
+        <FrequencyContext.Provider value={frequency}>
           <Routes />
         </FrequencyContext.Provider>
       </Router>

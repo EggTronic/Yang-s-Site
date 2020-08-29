@@ -5,7 +5,7 @@ import EggTap, { colors } from '../../assets/js/EggTap';
 const ProjectPageWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
-  height: calc(100vh - 164px);
+  height: calc(99vh - 164px);
   width: 90vw;
   top: 100px;
   background: rgba(111,111,111,0.4);
@@ -20,10 +20,14 @@ const ProjectPageWrapper = styled.div`
 function ProjectPage() {
   const wrapper = useRef(null);
   useEffect(() => {
-    new EggTap(wrapper.current, colors);
+    const audio = document.getElementById('audio');
+    audio.pause();
+    const eggTap = new EggTap(wrapper.current, colors);
+    return () => eggTap.clear();
   }, []);
   return (
     <ProjectPageWrapper ref={wrapper}>
+      Here is my recreation of mikutap -> in progress :D
     </ProjectPageWrapper>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const MusicPageWrapper = styled.div`
@@ -20,6 +20,10 @@ const MusicPageWrapper = styled.div`
 `;
 
 function MusicPage() {
+  useEffect(() => {
+    const audio = document.getElementById('audio');
+    audio.pause();
+  }, []);
   return (
     <MusicPageWrapper>
       This is made by AIDN. I really love this idea and I am trying to recreate it! So Cool!
@@ -27,7 +31,7 @@ function MusicPage() {
         src="https://aidn.jp/mikutap/"
         title="MikuTap"
         height="100%"
-        width="100%"
+        width="99.8%"
       >
       </iframe>
     </MusicPageWrapper>
