@@ -1,7 +1,4 @@
 /* eslint-disable */
-
-window.PIXI = PIXI;
-
 import pixiSound from 'pixi-sound';
 import 'pixi-layers';
 import '@pixi/graphics-extras';
@@ -61,9 +58,6 @@ export default class EggTap {
       resolution: devicePixelRatio
     });
 
-    // TweenLite.registerPlugin(PixiPlugin);
-    // PixiPlugin.registerPIXI(PIXI);
-
     // event
     this.appWrapper.addEventListener('mousedown', function () {
       this.isPressed = true;
@@ -101,7 +95,7 @@ export default class EggTap {
 
   _initBackground() {
     this.appBackground = new PIXI.Graphics()
-      .beginFill(this.colors[0])
+      .beginFill(this.colors[0], 1)
       .drawRegularPolygon(0, 0, 2 * Math.max(this.app.screen.width, this.app.screen.height), 4, 0);
     this.appBackground.displayGroup = this.botGroup;
     this.app.stage.addChild(this.appBackground)
@@ -252,15 +246,15 @@ export default class EggTap {
       .drawRegularPolygon(...polyPts);
     bg.seed = seed;
     bg.parentGroup = this.midGroup;
-
+    
     TweenLite.to(bg, 1, {
       duration: 1,
       x: heading >= 0.5 ? 2 * radius : -2 * radius,
       y: heading >= 0.5 ? 2 * radius : -2 * radius,
       onComplete: function () {
-        TweenLite.to(this.appBackground, 0, {
-          color: this.colors[seed]
-        });
+        this.appBackground
+          .beginFill(this.colors[seed], 1)
+          .drawRegularPolygon(0, 0, 2 * Math.max(this.app.screen.width, this.app.screen.height), 4, 0)
         this.app.stage.removeChild(bg);
       }.bind(this)
     });
