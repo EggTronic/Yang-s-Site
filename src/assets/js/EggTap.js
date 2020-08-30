@@ -215,6 +215,7 @@ export default class EggTap {
     PIXI.Loader.shared.load((loader, resources) => {
       resources;
       resources.bgm.sound.loop = true;
+      resources.bgm.sound.volume = 0.4;
       resources.bgm.sound.play();
       this._initTaps('horizontal', resources);
     });
