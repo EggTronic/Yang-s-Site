@@ -265,14 +265,14 @@ export default class EggTap {
 
   async _initAudios() {
     PIXI.Loader.shared.add('bgm', music);
-
     for (let name in audioSlices) {
       PIXI.Loader.shared.add(name, audioSlices[name]);
     }
+
     PIXI.Loader.shared.load((loader, resources) => {
-      resources;
       resources.bgm.sound.loop = true;
       resources.bgm.sound.volume = 0.5;
+
       resources.bgm.sound.play();
       this.bgmCtx = resources.bgm.sound.context.audioContext;
       this._initTaps();
