@@ -5,8 +5,7 @@ window.PIXI = PIXI;
 import pixiSound from 'pixi-sound';
 import 'pixi-layers';
 import '@pixi/graphics-extras';
-import { gsap } from 'gsap';
-import { PixiPlugin } from 'gsap/PixiPlugin';
+import { TweenLite } from 'gsap';
 import { a1, a2 } from './Animation';
 import music from './audios/warmspace_ins.mp3';
 import { audioSlices } from './audios/index';
@@ -34,17 +33,16 @@ export default class EggTap {
     this.appWrapper = wrapper;
     this.tappers = [];
     this.colors = colors;
+    this.appBackground;
     this.currentColor = 0;
     this.currentBgColor = 0;
-    this.currentBackGround = null;
-    this.lastBackGround = null;
     this.audios = null;
     this.currentTarget = null;
     this.isPressed = false;
     this.layout = 'horizontal'; // or vertical
     this.currentTime = 0;
     this.offset = -0.56;
-    this.interval = 0.125/2;
+    this.interval = 0.125 / 2;
     this.bgmCtx = null;
     this._init();
   }
@@ -62,8 +60,9 @@ export default class EggTap {
       autoResize: true,
       resolution: devicePixelRatio
     });
-    gsap.registerPlugin(PixiPlugin);
-    PixiPlugin.registerPIXI(PIXI);
+
+    // TweenLite.registerPlugin(PixiPlugin);
+    // PixiPlugin.registerPIXI(PIXI);
 
     // event
     this.appWrapper.addEventListener('mousedown', function () {
@@ -101,11 +100,11 @@ export default class EggTap {
   }
 
   _initBackground() {
-    const initialBackground = new PIXI.Graphics()
+    this.appBackground = new PIXI.Graphics()
       .beginFill(this.colors[0])
       .drawRegularPolygon(0, 0, 2 * Math.max(this.app.screen.width, this.app.screen.height), 4, 0);
-    initialBackground.displayGroup = this.botGroup;
-    this.app.stage.addChild(initialBackground)
+    this.appBackground.displayGroup = this.botGroup;
+    this.app.stage.addChild(this.appBackground)
   }
 
   _initAutoResize() {
@@ -150,7 +149,7 @@ export default class EggTap {
         const tapper = new PIXI.Graphics()
           .beginFill(0xffffff, 1)
           .drawRect(width * c, height * r, width, height);
-        gsap.to(tapper, { duration: 0, pixi: { alpha: 0 } });
+        TweenLite.to(tapper, 0, { alpha: 0 });
         tapper.parentGroup = this.topGroup;
         tapper.interactive = true;
         tapper.buttonMode = true;
@@ -163,18 +162,25 @@ export default class EggTap {
 
           const target = 'k' + (r * col + c + 1);
           if (this.currentTarget === target && !isClick) return;
-
           this.currentTarget = target;
-          const tl2 = gsap.timeline();
-          tl2.to(tapper, { duration: .1, pixi: { fillColor: '0xffffff', alpha: 1 } });
-          tl2.to(tapper, { duration: .6, pixi: { alpha: 0 } });
 
+          // click flash animation
+          TweenLite.to(tapper, .05, { alpha: 1 });
+          TweenLite.to(tapper, .6, { delay: 0.05, alpha: 0 });
+
+          // throttle
           if (!this._throttle()) return;
+
+          // fire sound
           this._dispatchSound(target);
+
+          // draw background
           this._drawBackground();
 
+          // fire animation
           this.currentColor++;
-          this.animations[(r + c) % 2](this.app, this.midGroup, PIXI, gsap, colors, this.currentColor);
+          if (this.currentColor > colors.length - 1) this.currentColor = this.currentColor % colors.length;
+          this.animations[(r + c) % 2](this.app, this.midGroup, PIXI, TweenLite, colors, this.currentColor);
 
         }.bind(this);
 
@@ -228,7 +234,7 @@ export default class EggTap {
   _drawBackground() {
     let seed = Math.floor(Math.random() * this.colors.length);
 
-    // if (seed !== this.currentColor) return;
+    if (seed !== Math.floor(Math.random() * this.colors.length)) return;
     const heading = Math.random();
     const radius = this.app.screen.width;
 
@@ -247,16 +253,14 @@ export default class EggTap {
     bg.seed = seed;
     bg.parentGroup = this.midGroup;
 
-    this.currentBackGround = bg;
-    const tl = gsap.timeline();
-    tl.to(bg, {
+    TweenLite.to(bg, 1, {
       duration: 1,
-      pixi: {
-        x: heading >= 0.5 ? 2 * radius : -2 * radius,
-        y: heading >= 0.5 ? 2 * radius : -2 * radius
-      },
+      x: heading >= 0.5 ? 2 * radius : -2 * radius,
+      y: heading >= 0.5 ? 2 * radius : -2 * radius,
       onComplete: function () {
-        if (!this.lastBackGround) return;
+        TweenLite.to(this.appBackground, 0, {
+          color: this.colors[seed]
+        });
         this.app.stage.removeChild(bg);
       }.bind(this)
     });
