@@ -43,7 +43,8 @@ export default class EggTap {
     this.isPressed = false;
 
     this.currentTime = 0;
-    this.interval = .125;
+    this.offset = -0.56;
+    this.interval = 0.125/2;
     this.bgmCtx = null;
     this._init();
   }
@@ -167,6 +168,7 @@ export default class EggTap {
           tl2.to(tapper, { duration: .1, pixi: { fillColor: '0xffffff', alpha: 1 } });
           tl2.to(tapper, { duration: .6, pixi: { alpha: 0 } });
 
+          if (!this._throttle()) return;
           this._dispatchSound(target);
           this._drawBackground();
 
@@ -188,31 +190,38 @@ export default class EggTap {
     }
   }
 
-  _dispatchSound(target) {
+  _throttle() {
     // throttle
-    if ((this.bgmCtx.currentTime - this.currentTime) < this.interval) return;
+    let timeSnapshot = this.bgmCtx.currentTime + this.offset;
 
-    // get current time
-    let time = this.bgmCtx.currentTime.toFixed(2);
+    if ((timeSnapshot - this.currentTime) < this.interval) return false;
 
+    this.currentTime = timeSnapshot + this.interval;
+    return true;
+    // // get current time
+    // let time = (this.bgmCtx.currentTime + this.offset).toFixed(3);
+
+    // // calculate currenTtime to match interval
+    // let sec = Math.floor(time);
+    // let msec = time - sec;
+
+    // if (msec === 0) {
+    //   this.currentTime = sec;
+    //   return true;
+    // }
+
+    // for (let i = 1; i <= 1 / this.interval; i++) {
+    //   if (Math.abs(msec - i * this.interval) < this.interval / 2) {
+    //     // this.currentTime = sec + i * this.interval;
+    //     this.currentTime = time;
+    //     return true;
+    //   }
+    // }
+  }
+
+  _dispatchSound(target) {
     // playsound
     PIXI.Loader.shared.resources[target].sound.play();
-
-    // calculate currenTtime to match interval
-    let sec = Math.floor(time);
-    let msec = time - sec;
-
-    if (msec === 0) {
-      this.currentTime = sec;
-      return;
-    }
-
-    for (let i = 1; i <= 1 / this.interval; i++) {
-      if (Math.abs(msec - i * this.interval) < this.interval / 2) {
-        this.currentTime = sec + i * this.interval;
-        return;
-      }
-    }
   }
 
   _drawBackground() {
