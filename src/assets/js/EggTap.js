@@ -40,7 +40,11 @@ export default class EggTap {
     this.lastBackGround = null;
     this.audios = null;
     this.currentTarget = null;
-    this.isMouseDown = false;
+    this.isPressed = false;
+
+    this.currentTime = 0;
+    this.interval = .125;
+    this.bgmCtx = null;
     this._init();
   }
 
@@ -62,10 +66,17 @@ export default class EggTap {
 
     // event
     this.appWrapper.addEventListener('mousedown', function () {
-      this.isMouseDown = true;
+      this.isPressed = true;
     }.bind(this))
     this.appWrapper.addEventListener('mouseup', function () {
-      this.isMouseDown = false;
+      this.isPressed = false;
+    }.bind(this))
+
+    this.appWrapper.addEventListener('touchstart', function () {
+      this.isPressed = true;
+    }.bind(this))
+    this.appWrapper.addEventListener('touchend', function () {
+      this.isPressed = false;
     }.bind(this))
   }
 
@@ -123,7 +134,7 @@ export default class EggTap {
     resize.bind(this)();
   }
 
-  _initTaps(mode, resources) {
+  _initTaps(mode) {
     let row = 4, col = 8;
     if (mode === 'vertical') {
       row = 8;
@@ -144,25 +155,62 @@ export default class EggTap {
         tapper.hitArea = new PIXI.Rectangle(width * c, height * r, width, height);
 
         const draw = function (isClick, e) {
-          if (!this.isMouseDown && !isClick) return;
+          e.stopPropagation();
+
+          if (!this.isPressed && !isClick) return;
+
           const target = 'k' + (r * col + c + 1);
           if (this.currentTarget === target && !isClick) return;
-          this.currentTarget = target;
 
-          this._drawBackground();
-          resources[target].sound.play();
-          this.currentColor++;
-          this.animations[(r + c) % 2](this.app, this.midGroup, PIXI, gsap, colors, this.currentColor);
+          this.currentTarget = target;
           const tl2 = gsap.timeline();
           tl2.to(tapper, { duration: .1, pixi: { fillColor: '0xffffff', alpha: 1 } });
           tl2.to(tapper, { duration: .6, pixi: { alpha: 0 } });
+
+          this._dispatchSound(target);
+          this._drawBackground();
+
+          this.currentColor++;
+          this.animations[(r + c) % 2](this.app, this.midGroup, PIXI, gsap, colors, this.currentColor);
+
         }.bind(this);
 
-        tapper.on('mouseover', (e) => draw(false, e));
-        tapper.on('mousedown', (e) => draw(true, e));
+        tapper.on('pointerover', (e) => draw(false, e));
+        tapper.on('pointerdown', (e) => draw(true, e));
+
+        // need something like touchmove && touchover, or fallback to dom events
+        // tapper.on('touchstart', (e) => draw(false, e));
+
         // Add it to the stage
         this.tappers.push(tapper);
         this.app.stage.addChild(tapper);
+      }
+    }
+  }
+
+  _dispatchSound(target) {
+    // throttle
+    if ((this.bgmCtx.currentTime - this.currentTime) < this.interval) return;
+
+    // get current time
+    let time = this.bgmCtx.currentTime.toFixed(2);
+
+    // playsound
+    PIXI.Loader.shared.resources[target].sound.play();
+
+    // calculate currenTtime to match interval
+    let sec = Math.floor(time);
+    let msec = time - sec;
+
+    if (msec === 0) {
+      this.currentTime = sec;
+      return;
+    }
+
+    for (let i = 1; i <= 1 / this.interval; i++) {
+      if (Math.abs(msec - i * this.interval) < this.interval / 2) {
+        this.currentTime = sec + i * this.interval;
+        return;
       }
     }
   }
@@ -215,9 +263,10 @@ export default class EggTap {
     PIXI.Loader.shared.load((loader, resources) => {
       resources;
       resources.bgm.sound.loop = true;
-      resources.bgm.sound.volume = 0.4;
+      resources.bgm.sound.volume = 0.5;
       resources.bgm.sound.play();
-      this._initTaps('horizontal', resources);
+      this.bgmCtx = resources.bgm.sound.context.audioContext;
+      this._initTaps();
     });
   }
 
@@ -225,9 +274,12 @@ export default class EggTap {
     PIXI.Loader.shared.reset();
     pixiSound.removeAll();
     for (let child of this.app.stage.children) {
-      child.off('mouseover');
-      child.off('mouseup');
-      child.off('mousedown');
+      child.off('pointerover');
+      child.off('pointerdown');
+      // child.off('pointerenter');
+      // child.off('touchmove');
+      // child.off('touchend');
+      // child.off('touchstart');
     }
     // this.appWrapper.removeEventListener('mouseup');
     // this.appWrapper.removeEventListener('mousedown');
