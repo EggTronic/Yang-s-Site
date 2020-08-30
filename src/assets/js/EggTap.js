@@ -41,7 +41,7 @@ export default class EggTap {
     this.audios = null;
     this.currentTarget = null;
     this.isPressed = false;
-
+    this.layout = 'horizontal'; // or vertical
     this.currentTime = 0;
     this.offset = -0.56;
     this.interval = 0.125/2;
@@ -127,7 +127,8 @@ export default class EggTap {
       //   t.position.set(parent.width, parent.height);
       // } 
 
-      if (this.app.screen.width > this.app.screen.height) {
+      if (this.app.screen.width < this.app.screen.height) {
+        this.layout = 'vertical';
       }
 
     }
@@ -135,9 +136,9 @@ export default class EggTap {
     resize.bind(this)();
   }
 
-  _initTaps(mode) {
+  _initTaps() {
     let row = 4, col = 8;
-    if (mode === 'vertical') {
+    if (this.layout === 'vertical') {
       row = 8;
       col = 4;
     }
