@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Parallax from 'parallax-js';
 import Typist from 'react-typist';
+import useWindowSize from '../../hooks/useWindowSize';
 import Card from '../../components/Card/Card';
 import Cube from '../../components/Cube/Cube';
 import logo from '../../assets/images/logo2-transparent.png';
@@ -29,8 +30,8 @@ const HomePageWrapper = styled.div`
 
 const LeftWrapper = styled.div`
   position: relative;
-  width:  40vw;
-  min-width: 600px;
+  width: ${props => props.width};
+  min-width: ${props => props.minWidth};
   height: calc(90% - 20px);
   box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
@@ -48,8 +49,8 @@ const LeftWrapper = styled.div`
 
 
 const RightWrapper = styled.div`
-  width:  40vw;
-  min-width: 600px;
+  width: ${props => props.width};
+  min-width: ${props => props.minWidth};
   height: calc(90% - 20px);
   display: flex;
   justify-content: center;
@@ -59,6 +60,7 @@ const RightWrapper = styled.div`
 function HomePage() {
   const scene1 = useRef(null);
   const scene2 = useRef(null);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     const parallaxInstance1 = new Parallax(scene1.current, {
@@ -77,11 +79,15 @@ function HomePage() {
     <HomePageWrapper>
       <Card
         url={logo}
-        width={'40.5vw'}
+        width={width < 715 ? `${width-100}px` : '40.5vw'}
         height={'calc(90% - 52px)'}
-        minWidth={'600px'}
+        minWidth={width < 715? `0px`: '600px'}
       />
-      <LeftWrapper ref={scene1}>
+      <LeftWrapper 
+        ref={scene1} 
+        width={width < 715 ? `${width-100}px` : '40.5vw'}
+        minWidth={width < 715? `0px`: '600px'}
+      >
         <div data-depth="0.06">
           <Typist
             avgTypingDelay={80}
@@ -103,7 +109,11 @@ function HomePage() {
           </Typist>
         </div>
       </LeftWrapper>
-      <RightWrapper ref={scene2}>
+      <RightWrapper 
+        ref={scene2}
+        width={width < 715 ? `${width-100}px` : '40.5vw'}
+        minWidth={width < 715? `0px`: '600px'}
+      >
         <div data-depth="0.5" >
           <Cube />
         </div>

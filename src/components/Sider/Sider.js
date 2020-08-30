@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import GlowIcon from '../../components/GlowIcon/GlowIcon';
+import useWindowSize from '../../hooks/useWindowSize';
 
 const UL = styled.ul`
   position:fixed;
@@ -15,6 +16,8 @@ const UL = styled.ul`
 `
 
 function Sider() {
+  const { width } = useWindowSize();
+  if (width < 800) return null;
   return (
     <UL>
       <GlowIcon
