@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import EggTap, { colors } from '../../assets/js/EggTap';
 
 const ProjectPageWrapper = styled.div`
   position: relative;
@@ -22,12 +21,17 @@ function ProjectPage() {
   useEffect(() => {
     const audio = document.getElementById('audio');
     audio.pause();
-    const eggTap = new EggTap(wrapper.current, colors);
-    return () => eggTap.clear();
   }, []);
   return (
     <ProjectPageWrapper ref={wrapper}>
       Here is my recreation of mikutap -> in progress :D
+      <iframe
+        src="https://eggtronic.github.io/EggTap/"
+        title="EggTap"
+        height="100%"
+        width="99.8%"
+      >
+      </iframe>
     </ProjectPageWrapper>
   );
 }
