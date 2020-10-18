@@ -4,7 +4,7 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  withRouter
+  withRouter,
 } from "react-router-dom";
 import { FrequencyContext } from './assets/const';
 import { TransitionGroup, CSSTransition } from "react-transition-group";

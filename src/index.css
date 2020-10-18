@@ -5,3 +5,23 @@ body {
   color: white;
   overflow: hidden;
 }
+
+.nes-charmander {
+  position: relative;
+  display: inline-block;
+  width: 116px;
+  height: 108px;
+}
+
+.nes-charmander::before {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  content: "";
+  background: 0 0;
+  width: 6px;
+  height: 6px;
+  color: #f77702;
+  box-shadow: 30px 6px #000202, 36px 6px #000202, 42px 6px #000202, 48px 6px #000202, 108px 6px #000202, 24px 12px #000202, 30px 12px, 36px 12px, 42px 12px, 48px 12px, 54px 12px #000202, 102px 12px #000202, 108px 12px #eb2010, 114px 12px #000202, 18px 18px #000202, 24px 18px, 30px 18px, 36px 18px, 42px 18px, 48px 18px, 54px 18px, 60px 18px #000202, 102px 18px #000202, 108px 18px #eb2010, 114px 18px #eb2010, 120px 18px #000202, 18px 24px #000202, 24px 24px, 30px 24px, 36px 24px, 42px 24px, 48px 24px, 54px 24px, 60px 24px #000202, 102px 24px #000202, 108px 24px #eb2010, 114px 24px #eb2010, 120px 24px #000202, 12px 30px #000202, 18px 30px, 24px 30px, 30px 30px, 36px 30px, 42px 30px, 48px 30px, 54px 30px, 60px 30px, 66px 30px #000202, 96px 30px #000202, 102px 30px #eb2010, 108px 30px #eb2010, 114px 30px, 120px 30px #eb2010, 126px 30px #000202, 6px 36px #000202, 12px 36px, 18px 36px, 24px 36px, 30px 36px, 36px 36px #fdfcff, 42px 36px #000202, 48px 36px, 54px 36px, 60px 36px, 66px 36px #000202, 96px 36px #000202, 102px 36px #eb2010, 108px 36px, 114px 36px #e7d70e, 120px 36px #eb2010, 126px 36px #000202, 6px 42px #000202, 12px 42px, 18px 42px, 24px 42px, 30px 42px, 36px 42px #000202, 42px 42px #000202, 48px 42px, 54px 42px, 60px 42px, 66px 42px, 72px 42px #000202, 96px 42px #000202, 102px 42px #eb2010, 108px 42px #e5d70a, 114px 42px #e5d70a, 120px 42px #eb2010, 126px 42px #000202, 6px 48px #000202, 12px 48px, 18px 48px, 24px 48px, 30px 48px, 36px 48px #000202, 42px 48px #000202, 48px 48px, 54px 48px, 60px 48px, 66px 48px, 72px 48px #000202, 102px 48px #000202, 108px 48px #e5d70a, 114px 48px #000202, 120px 48px #000202, 12px 54px #000202, 18px 54px, 24px 54px, 30px 54px, 36px 54px, 42px 54px, 48px 54px, 54px 54px, 60px 54px, 66px 54px, 72px 54px, 78px 54px #000202, 102px 54px #000202, 108px 54px, 114px 54px #000202, 18px 60px #000202, 24px 60px #000202, 30px 60px, 36px 60px, 42px 60px, 48px 60px, 54px 60px, 60px 60px, 66px 60px, 72px 60px, 78px 60px, 84px 60px #000202, 96px 60px #000202, 102px 60px, 108px 60px, 114px 60px #000202, 30px 66px #000202, 36px 66px #000202, 42px 66px #000202, 48px 66px, 54px 66px, 60px 66px #000202, 66px 66px, 72px 66px, 78px 66px, 84px 66px #000202, 90px 66px #000202, 96px 66px, 102px 66px, 108px 66px #000202, 36px 72px #000202, 42px 72px #e7d70e, 48px 72px #e5d70a, 54px 72px #000202, 60px 72px, 66px 72px, 72px 72px, 78px 72px, 84px 72px, 90px 72px #000202, 96px 72px, 102px 72px, 108px 72px #000202, 36px 78px #000202, 42px 78px #e5d70a, 48px 78px #e5d70a, 54px 78px #e5d70a, 60px 78px #000202, 66px 78px #000202, 72px 78px, 78px 78px, 84px 78px, 90px 78px #000202, 96px 78px, 102px 78px #000202, 30px 84px #000202, 36px 84px #fdfcff, 42px 84px #000202, 48px 84px #e7d70e, 54px 84px #e5d70a, 60px 84px #e5d70a, 66px 84px, 72px 84px, 78px 84px, 84px 84px, 90px 84px #000202, 96px 84px #000202, 36px 90px #000202, 42px 90px #000202, 48px 90px #000202, 54px 90px #e5d70a, 60px 90px #e5d70a, 66px 90px, 72px 90px, 78px 90px, 84px 90px #000202, 90px 90px #000202, 54px 96px #000202, 60px 96px #000202, 66px 96px #000202, 78px 96px #000202, 84px 96px #000202, 60px 102px #000202, 66px 102px #fdfcff, 78px 102px #fdfcff, 84px 102px #000202, 66px 108px #000202, 72px 108px #000202, 78px 108px #000202;
+  transform: rotate(0);
+}

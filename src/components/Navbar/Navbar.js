@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import GlowIcon from '../GlowIcon/GlowIcon';
 import { routerPath } from '../../pages/router/routerPath';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -25,6 +25,9 @@ const MenuWrapper = styled.div`
   transition: all .3s linear;
   z-index: 10;
   overflow-y: auto;
+  > a {
+    text-decoration: inherit;
+  }
 `;
 
 const Icon = styled(GlowIcon)`
@@ -63,52 +66,33 @@ const MenuItem = styled.span`
   position: relative;
   display: ${props => props.menuOpen ? 'block' : 'inline-block'};
   margin: 0;
-  line-height: 64px;
-  height: 64px;
+  line-height: 54px;
+  height: 54px;
   font-size: 14px;
   vertical-align: top;
   margin-left: ${props => props.menuOpen ? '40px' : '30px'};
   cursor: pointer;
+  border-bottom: ${props => props.isFocus? '2px solid white': '2px solid transparent'} ;
+  transition: all 1s linear;
+  &:hover{
+    background: white;
+    border-radius:3px;
+    span {
+      color: black;
+    }
+  }
+  padding: 0px 10px;
 `;
 
 const TextWrapper = styled.span`
   position: relative;
   color: white;
-  &:after,&:before {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    height: 35px;
-    width: 110%;
-    opacity: 0;
-    top: -12px;
-    left: -6%;
-	  -webkit-transition: opacity 0.55s, -webkit-transform 0.55s;
-	  transition: opacity 0.55s, transform 0.55s;
-  };
-  &:before {
-    border-left: 1px solid;
-    border-right: 1px solid;
-    -webkit-transform: scale(1,0);
-	  transform: scale(1,0);
-  }
-  &:after {
-    border-bottom: 1px solid;
-    border-top: 1px solid;
-    -webkit-transform: scale(0,1);
-    transform: scale(0,1);
-  }
-
-  &:hover:after,&:hover:before {
-    opacity: 1;
-	  -webkit-transform: scale(1);
-	  transform: scale(1);
-  }
 `;
 
 function Navbar() {
   const { width } = useWindowSize();
   const [menuOpen, toggleMenuOpen] = useState(false);
+  const location = useLocation();
 
   const renderHeader = () => {
     return (
@@ -116,7 +100,7 @@ function Navbar() {
         {Object.keys(routerPath).map(k => {
           return (
             <Link to={routerPath[k].path} key={k}>
-              <MenuItem>
+              <MenuItem isFocus={location.pathname === routerPath[k].path}>
                 <TextWrapper>{routerPath[k].name}</TextWrapper>
               </MenuItem>
             </Link>
