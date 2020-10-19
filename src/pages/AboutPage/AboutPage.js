@@ -152,7 +152,7 @@ function AboutPage() {
               <p>Location: Shanghai</p>
               <hr />
               <p>I am a senior programmer with good knowledge of full-stack techiques.
-              I am quite good at learning new techiques and enjoying progress of finding best solutions.
+              I love learning new techiques and enjoying the progress of finding best solutions.
               I love refactoring my code to ensure it's as DRY as it can be. Also, I am a good team player,
               I love sharing fancy techniques and ideas. As the saying goes: 'two heads are better than one'.
             </p>
