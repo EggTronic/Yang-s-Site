@@ -26,10 +26,12 @@ const BackWrapper = styled.div`
   height: 100%;
 `;
 
-const SectionWrapper = styled.div`
+const SectionWrapper = styled.div.attrs({
+  className: 'section-wrapper'
+})`
   position: relative;
   height: calc(100% - 80px);
-  overflow: auto;
+  overflow: hidden;
   ::-webkit-scrollbar {
     width: 5px;
     position: absolute;
@@ -85,9 +87,9 @@ const AboutPageWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   overflow: auto;
-  /* ::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     display: none;
-  } */
+  }
   ::-webkit-scrollbar {
     width: 5px;
     position: absolute;
@@ -139,7 +141,7 @@ function AboutPage() {
           <SectionHeader>
             <GlowIcon className='fas fa-user-secret' />
           </SectionHeader>
-          <SectionWrapper onScroll={e => e.stopPropagation()}>
+          <SectionWrapper>
             <Section background='#373A40' textAlign='left'>
               <Img
                 src={avatar}
@@ -169,7 +171,7 @@ function AboutPage() {
           <SectionHeader>
             <GlowIcon className='fas fa-graduation-cap' />
           </SectionHeader>
-          <SectionWrapper onScroll={e => e.stopPropagation()}>
+          <SectionWrapper>
             <Section background='#f38181'>
               <Img
                 src={unimelb}

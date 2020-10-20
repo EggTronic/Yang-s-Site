@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   height: ${props => props.height};
   width: ${props => props.width};
   perspective: 1000px;
-  margin: 10px;
+  margin: 0px 10px 10px 10px;
   overflow: hidden;
   &:hover {
     > div:nth-child(1)  {
@@ -35,6 +35,9 @@ const Wrapper = styled.div`
     --border-width: 50px;
     display: flex;
     color: white;
+    .section-wrapper{
+      overflow-y: overlay;
+    }
   }
   h1 {
     font-size: 1.5rem;
@@ -57,7 +60,7 @@ function FlipCard({ children, height, width }) {
   return (
     <Wrapper height={height} width={width}>
       <Inner>
-        <Front>
+        <Front onScroll={e => e.stopPropagation()}>
           {children[0]}
         </Front>
         <Back>
