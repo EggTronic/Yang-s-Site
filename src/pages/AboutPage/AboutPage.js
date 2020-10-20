@@ -80,10 +80,7 @@ const AboutPageWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  overflow: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
+  overflow-y: overlay;
   ::-webkit-scrollbar {
     width: 5px;
     position: absolute;
