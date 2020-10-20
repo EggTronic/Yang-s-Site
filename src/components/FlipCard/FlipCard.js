@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Card = styled.div`
   position: absolute;
@@ -48,12 +48,39 @@ const Wrapper = styled.div`
   }
 `;
 
+const moveGradient = keyframes`
+  50% {
+    background-position: 100% 50%;
+  }
+`;
+
 const Inner = styled.div`
   background: transparent;
   transition: transform 0.8s;
   transform-style: preserve-3d;
   height: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    animation: ${moveGradient} 4s alternate infinite;
+  }
 `;
 
 function FlipCard({ children, height, width }) {

@@ -1,17 +1,11 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import FlipCard from '../../components/FlipCard/FlipCard';
 import GlowIcon from '../../components/GlowIcon/GlowIcon';
 import unimelb from '../../assets/images/unimelb.png';
 import uniliverpool from '../../assets/images/uniliverpool.png';
 import monstercat from '../../assets/images/monstercat.png';
 import avatar from '../../assets/images/avatar.png';
-
-const moveGradient = keyframes`
-  50% {
-    background-position: 100% 50%;
-  }
-`;
 
 const FrontWrapper = styled.div`
   display: flex;
@@ -102,30 +96,6 @@ const AboutPageWrapper = styled.div`
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
-  & > div > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    &::after {
-      position: absolute;
-      content: "";
-      top: calc(-1 * var(--border-width));
-      left: calc(-1 * var(--border-width));
-      z-index: -1;
-      width: calc(100% + var(--border-width) * 2);
-      height: calc(100% + var(--border-width) * 2);
-      background: linear-gradient(
-        60deg,
-        hsl(134, 85%, 66%),
-        hsl(179, 85%, 66%)
-      );
-      background-size: 300% 300%;
-      background-position: 0 50%;
-
-      animation: ${moveGradient} 4s alternate infinite;
-    }
   }
 `;
 
