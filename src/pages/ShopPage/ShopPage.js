@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Item from '../../components/Item/Item';
 import GlowIcon from '../../components/GlowIcon/GlowIcon';
 import { SectionHeader } from '../AboutPage/AboutPage';
-import test from './items/logo.png';
-import Z200 from './items/Z200.jpg';
+import { items } from './items';
 
 const ShopPageWrapper = styled.div`
   position: relative;
@@ -33,74 +32,26 @@ const ShopPageWrapper = styled.div`
   }
 `;
 
+const wrapperClassName = 'shop-wrapper';
+
 function ShopPage() {
   return (
-    <ShopPageWrapper>
+    <ShopPageWrapper className={wrapperClassName}>
       <SectionHeader background={
         'linear-gradient( to bottom, rgba(42,71,94,1.0) 5%, rgba(42,71,94,0.0) 70%);'
       }>
         <GlowIcon className="fas fa-store" />
       </SectionHeader>
-      <Item
-        image={Z200}
-        price={68}
-        discount={0.75}
-        name='Logic Z200'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
-      <Item
-        image={test}
-        price={26}
-        discount={0.25}
-        name='EggTronic'
-      />
+      {items.map((item, i) =>
+        <Item
+          key={i + item.name}
+          image={item.preview}
+          price={item.price}
+          discount={item.discount}
+          name={item.name}
+          wrapperClassName={wrapperClassName}
+        />)
+      }
     </ShopPageWrapper>
   );
 }

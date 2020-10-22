@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { useIntersection } from 'react-use';
+import { fadeIn, fadeOut } from '../../utils';
 
 const PriceSection = styled.div`
   line-height: 15px;
@@ -78,11 +80,22 @@ const Content = styled.div`
   }
 `;
 
-function Item({ name, image, price, discount }) {
+function Item({ name, image, price, discount, wrapperClassName }) {
+  const wrapper = useRef(null);
+  const intersection = useIntersection(wrapper, {
+    root: document.querySelector('.' + wrapperClassName),
+    rootMargin: '0px',
+    threshold: 0.4
+  });
+
+  intersection && intersection.intersectionRatio < 0.4
+    ? fadeOut(wrapper.current)
+    : fadeIn(wrapper.current);
+
   const discountText = '-' + discount * 100 + '%';
-  const newPrice = (price * (1 - discount)).toFixed(2)
+  const newPrice = (price * (1 - discount)).toFixed(2);
   return (
-    <Wrapper>
+    <Wrapper ref={wrapper}>
       <Preview src={image} />
       <PriceSection>
         <Content>

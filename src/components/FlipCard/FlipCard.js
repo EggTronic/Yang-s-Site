@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { useIntersection } from 'react-use';
+import { fadeIn, fadeOut } from '../../utils';
 
 const Card = styled.div`
   position: absolute;
@@ -83,9 +85,24 @@ const Inner = styled.div`
   }
 `;
 
-function FlipCard({ children, height, width }) {
+function FlipCard({ children, height, width, wrapperClassName }) {
+  const wrapper = useRef(null)
+  const intersection = useIntersection(wrapper, {
+    root: document.querySelector('.' + wrapperClassName),
+    rootMargin: '0px',
+    threshold: 0.4
+  });
+
+  intersection && intersection.intersectionRatio < 0.4
+    ? fadeOut(wrapper.current)
+    : fadeIn(wrapper.current);
+
   return (
-    <Wrapper height={height} width={width}>
+    <Wrapper
+      ref={wrapper}
+      height={height}
+      width={width}
+    >
       <Inner>
         <Front onScroll={e => e.stopPropagation()}>
           {children[0]}
