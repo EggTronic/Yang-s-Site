@@ -41,8 +41,8 @@ const SectionWrapper = styled.div.attrs({
   }
 `;
 
-const SectionHeader = styled.div`
-  background: #373A40;
+export const SectionHeader = styled.div`
+  background: ${props => props.background ? props.background : '#373A40'};
   width: 100%;
   height: 80px;
   li {

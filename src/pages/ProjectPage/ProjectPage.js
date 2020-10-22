@@ -24,7 +24,7 @@ function ProjectPage() {
   }, []);
   return (
     <ProjectPageWrapper ref={wrapper}>
-      Here is my recreation of mikutap -> in progress :D
+      Here is my recreation of mikutap - in progress :D
       <iframe
         src="https://eggtronic.github.io/EggTap/"
         title="EggTap"
