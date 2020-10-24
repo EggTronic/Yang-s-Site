@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useIntersection } from 'react-use';
 import { fadeIn, fadeOut } from '../../utils';
 
+
 const PriceSection = styled.div`
   line-height: 15px;
   padding: 4px 10px;
@@ -10,7 +11,6 @@ const PriceSection = styled.div`
   position: relative;
   background: linear-gradient( 135deg, rgba(37,49,63,1) 5%,rgba(54,97,125,1) 95%);
 `;
-
 
 const Preview = styled.img`
   height: calc(100% - 127.81px);
@@ -142,16 +142,11 @@ const Content = styled.div`
     font-weight: 300;
     color: #acdbf5;
   }
-  h {
-    font-family: "Motiva Sans", Sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #fff;
-    margin: 0 0 10px;
-    letter-spacing: 2px;
-    font-weight: normal;
-    padding-top: 2px;
+  h2 {
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; 
   }
 `;
 
