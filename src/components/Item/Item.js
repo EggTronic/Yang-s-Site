@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { useIntersection } from 'react-use';
 import { fadeIn, fadeOut } from '../../utils';
-
+import soldImg from '../../assets/images/sold.png'
 
 const PriceSection = styled.div`
   line-height: 15px;
@@ -19,6 +19,20 @@ const Preview = styled.img`
   display: block;
   opacity: 0.8;
   cursor: pointer;
+  position: relative;
+`;
+
+const Sold = styled.img`
+  content: '';
+  z-index:1;
+  top: 0;
+  left: 0;
+  height: calc(100% - 127.81px);
+  width: 100%;
+  position: absolute;
+  background-image: url(${soldImg});
+  background-size: cover;
+  pointer-events: none;
 `;
 
 const Modal = styled.div`
@@ -96,6 +110,7 @@ const Wrapper = styled.div`
   font-family: Tahoma, Arial, Helvetica, sans-serif;
   box-shadow: 0 0 5px #000;
   margin: 20px;
+  position: relative;
   :hover ${PriceSection}{
     background: rgba(54,97,125,1);
   }
@@ -150,10 +165,10 @@ const Content = styled.div`
   }
 `;
 
-function Item({ name, image, price, discount }) {
+function Item({ name, image, price, discount, sold }) {
   const wrapper = useRef(null);
   const preview = useRef(null);
-  
+
   const discountText = '-' + discount * 100 + '%';
   const newPrice = (price * (1 - discount)).toFixed(2);
 
@@ -202,13 +217,14 @@ function Item({ name, image, price, discount }) {
         <div id="caption"></div>
       </Modal>
       <Wrapper ref={wrapper}>
+        {sold && <Sold />}
         <Preview
           src={image}
           ref={preview}
           alt={name}
+          sold={sold}
           onClick={handleOpen}
         />
-
         <PriceSection>
           <Content>
             <h2>{name}</h2>

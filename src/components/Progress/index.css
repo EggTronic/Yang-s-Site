@@ -1,10 +1,2 @@
 @import "../../../node_modules/nes.css/css/nes.css";
 
-.nes-progress {
-  width: 90%;
-}
-
-.nes-progress::before {
-  content: 'React';
-  position: absolute;
-}
