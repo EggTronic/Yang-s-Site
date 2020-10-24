@@ -6,6 +6,7 @@ import headphone from './headphone.jpg';
 import printer from './printer+copy-paper.jpg';
 import xiaomi from './xiaomi.jpg';
 import keyboard from './keyboard.jpg';
+import meidi from './meidi.jpg';
 import mic from './mic.jpg';
 import san from './san.jpg';
 import tape from './tape.jpg';
@@ -48,13 +49,13 @@ export const items = [
     preview: keyboard,
     name: '酷冷至尊 Pro S - 茶轴',
     price: 120,
-    discount: 0.8
+    discount: 0.9
   },
   {
     preview: mic,
     name: '铁三角 - AT9934',
     price: 189,
-    discount: 0.7
+    discount: 0.75
   },
   {
     preview: binocular,
@@ -67,6 +68,12 @@ export const items = [
     name: '小吸尘器',
     price: 25,
     discount: 0.8
+  },
+  {
+    preview: meidi,
+    name: '美的 - 多功能电饭煲',
+    price: 160,
+    discount: 0.9
   },
   {
     preview: san,
