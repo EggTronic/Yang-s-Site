@@ -4,6 +4,9 @@ import binocular from './binocular.jpg';
 import cleaner from './cleaner.jpg';
 import headphone from './headphone.jpg';
 import printer from './printer+copy-paper.jpg';
+import xiaomi from './xiaomi.jpg';
+import keyboard from './keyboard.jpg';
+import mic from './mic.jpg';
 import san from './san.jpg';
 import tape from './tape.jpg';
 import pins from './pins.jpg';
@@ -33,6 +36,24 @@ export const items = [
     preview: printer,
     name: 'Brother HL1110 打印机',
     price: 30,
+    discount: 0.7
+  },
+  {
+    preview: xiaomi,
+    name: '小米接线板',
+    price: 10,
+    discount: 0.6
+  },
+  {
+    preview: keyboard,
+    name: '酷冷至尊 Pro S - 茶轴',
+    price: 120,
+    discount: 0.8
+  },
+  {
+    preview: mic,
+    name: '铁三角 - AT9934',
+    price: 189,
     discount: 0.7
   },
   {
