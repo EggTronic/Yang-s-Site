@@ -1,3 +1,18 @@
+
+div::-webkit-scrollbar {
+  width: 5px;
+  position: absolute;
+}
+div::-webkit-scrollbar-track {
+  background: #373A40;
+}
+div::-webkit-scrollbar-thumb {
+  background: white;
+}
+div::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .router-wrapper {
   position: absolute;
   width: 90vw;

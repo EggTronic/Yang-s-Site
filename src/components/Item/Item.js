@@ -11,6 +11,85 @@ const PriceSection = styled.div`
   background: linear-gradient( 135deg, rgba(37,49,63,1) 5%,rgba(54,97,125,1) 95%);
 `;
 
+
+const Preview = styled.img`
+  height: calc(100% - 127.81px);
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.8;
+  cursor: pointer;
+`;
+
+const Modal = styled.div`
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  } 
+
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }
+`;
+
 const Wrapper = styled.div`
   height: 400px;
   width: 300px;
@@ -20,13 +99,9 @@ const Wrapper = styled.div`
   :hover ${PriceSection}{
     background: rgba(54,97,125,1);
   }
-`;
-
-const Preview = styled.img`
-  height: calc(100% - 127.81px);
-  width: 100%;
-  background-size: cover;
-  display: block;
+  :hover ${Preview} {
+    opacity: 1;
+  }
 `;
 
 const Discount = styled.div`
@@ -80,11 +155,31 @@ const Content = styled.div`
   }
 `;
 
-function Item({ name, image, price, discount, wrapperClassName }) {
+function Item({ name, image, price, discount }) {
   const wrapper = useRef(null);
+  const preview = useRef(null);
+  
+  const discountText = '-' + discount * 100 + '%';
+  const newPrice = (price * (1 - discount)).toFixed(2);
+
+  const handleOpen = () => {
+    let modal = document.getElementById("modal");
+    let modalImg = document.getElementById("modalImg");
+    let captionText = document.getElementById("caption");
+
+    modal.style.display = "block";
+    modalImg.src = preview.current.src;
+    captionText.innerHTML = preview.current.alt;
+  };
+
+  const handlClose = () => {
+    let modal = document.getElementById("modal");
+    modal.style.display = "none";
+  };
+
   const intersection = useIntersection(wrapper, {
-    root: document.querySelector('.' + wrapperClassName),
-    rootMargin: '0px',
+    root: null,
+    rootMargin: '10px',
     threshold: 0.4
   });
 
@@ -92,25 +187,48 @@ function Item({ name, image, price, discount, wrapperClassName }) {
     ? fadeOut(wrapper.current)
     : fadeIn(wrapper.current);
 
-  const discountText = '-' + discount * 100 + '%';
-  const newPrice = (price * (1 - discount)).toFixed(2);
   return (
-    <Wrapper ref={wrapper}>
-      <Preview src={image} />
-      <PriceSection>
-        <Content>
-          <h2>{name}</h2>
-          <p>Offer ends 20 Nov @ 20:00pm.</p>
-        </Content>
-        <Discount>
-          {discountText}
-        </Discount>
-        <PriceWrapper>
-          <OriginalPrice>A$ {price}</OriginalPrice>
-          <NewPrice>A$ {newPrice}</NewPrice>
-        </PriceWrapper>
-      </PriceSection>
-    </Wrapper>
+    <>
+      <Modal
+        id="modal"
+        onClick={handlClose}
+      >
+        <span
+          className="close"
+          onClick={handlClose}
+        >&times;
+        </span>
+        <img
+          className="modal-content"
+          id="modalImg"
+          alt={name}
+          onClick={e => e.stopPropagation()}
+        />
+        <div id="caption"></div>
+      </Modal>
+      <Wrapper ref={wrapper}>
+        <Preview
+          src={image}
+          ref={preview}
+          alt={name}
+          onClick={handleOpen}
+        />
+
+        <PriceSection>
+          <Content>
+            <h2>{name}</h2>
+            <p>Offer ends 20 Nov @ 20:00pm.</p>
+          </Content>
+          <Discount>
+            {discountText}
+          </Discount>
+          <PriceWrapper>
+            <OriginalPrice>A$ {price}</OriginalPrice>
+            <NewPrice>A$ {newPrice}</NewPrice>
+          </PriceWrapper>
+        </PriceSection>
+      </Wrapper>
+    </>
   )
 }
 

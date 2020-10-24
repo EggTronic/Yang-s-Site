@@ -17,26 +17,11 @@ const ShopPageWrapper = styled.div`
   overflow: auto;
   justify-content: center;
   align-items: center;
-  ::-webkit-scrollbar {
-    width: 5px;
-    position: absolute;
-  }
-  ::-webkit-scrollbar-track {
-    background: #373A40;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: white;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `;
-
-const wrapperClassName = 'shop-wrapper';
 
 function ShopPage() {
   return (
-    <ShopPageWrapper className={wrapperClassName}>
+    <ShopPageWrapper>
       <SectionHeader background={
         'linear-gradient( to bottom, rgba(42,71,94,1.0) 5%, rgba(42,71,94,0.0) 70%);'
       }>
@@ -49,7 +34,6 @@ function ShopPage() {
           price={item.price}
           discount={item.discount}
           name={item.name}
-          wrapperClassName={wrapperClassName}
         />)
       }
     </ShopPageWrapper>

@@ -26,19 +26,6 @@ const SectionWrapper = styled.div.attrs({
   position: relative;
   height: calc(100% - 80px);
   overflow: hidden;
-  ::-webkit-scrollbar {
-    width: 5px;
-    position: absolute;
-  }
-  ::-webkit-scrollbar-track {
-    background: #373A40;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: white;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `;
 
 export const SectionHeader = styled.div`
@@ -81,27 +68,12 @@ const AboutPageWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   overflow-y: overlay;
-  ::-webkit-scrollbar {
-    width: 5px;
-    position: absolute;
-  }
-  ::-webkit-scrollbar-track {
-    background: #373A40;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: white;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `;
-
-const wrapperClassName = 'about-wrapper'
 
 function AboutPage() {
   return (
-    <AboutPageWrapper className={wrapperClassName}>
-      <FlipCard wrapperClassName={wrapperClassName} height='100%' width='400px'>
+    <AboutPageWrapper>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <GlowIcon className='fas fa-user-secret' />
           <h1>General</h1>
@@ -131,7 +103,7 @@ function AboutPage() {
           </SectionWrapper>
         </BackWrapper>
       </FlipCard>
-      <FlipCard wrapperClassName={wrapperClassName}  height='100%' width='400px'>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <GlowIcon className='fas fa-graduation-cap' />
           <h1>Education</h1>
@@ -176,7 +148,7 @@ function AboutPage() {
           </SectionWrapper>
         </BackWrapper>
       </FlipCard>
-      <FlipCard wrapperClassName={wrapperClassName}  height='100%' width='400px'>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <GlowIcon className='fas fa-bolt' />
           <h1>Skill</h1>
@@ -188,7 +160,7 @@ function AboutPage() {
           <h1>Typescript</h1>
         </div>
       </FlipCard>
-      <FlipCard wrapperClassName={wrapperClassName}  height='100%' width='400px'>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <GlowIcon className='fas fa-atom' />
           <h1>Experience</h1>
@@ -200,7 +172,7 @@ function AboutPage() {
           <h1>React</h1>
         </div>
       </FlipCard>
-      <FlipCard wrapperClassName={wrapperClassName}  height='100%' width='400px'>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <GlowIcon className='fas fa-headphones-alt' />
           <h1>Music</h1>
@@ -217,7 +189,7 @@ function AboutPage() {
           </Section>
         </div>
       </FlipCard>
-      <FlipCard wrapperClassName={wrapperClassName}  height='100%' width='400px'>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <GlowIcon className='fas fa-video' />
           <h1>Film</h1>
@@ -229,7 +201,7 @@ function AboutPage() {
           <h1>Pacific Rim</h1>
         </div>
       </FlipCard>
-      <FlipCard wrapperClassName={wrapperClassName}  height='100%' width='400px'>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <i className='nes-charmander' />
           <h1>Anime</h1>
@@ -241,7 +213,7 @@ function AboutPage() {
           <h1>No Game No Life</h1>
         </div>
       </FlipCard>
-      <FlipCard wrapperClassName={wrapperClassName} height='100%' width='400px'>
+      <FlipCard height='100%' width='400px'>
         <FrontWrapper>
           <GlowIcon className='fas fa-gamepad' />
           <h1>Game</h1>

@@ -85,10 +85,11 @@ const Inner = styled.div`
   }
 `;
 
-function FlipCard({ children, height, width, wrapperClassName }) {
-  const wrapper = useRef(null)
+function FlipCard({ children, height, width }) {
+  const wrapper = useRef(null);
+
   const intersection = useIntersection(wrapper, {
-    root: document.querySelector('.' + wrapperClassName),
+    root: null,
     rootMargin: '0px',
     threshold: 0.4
   });
