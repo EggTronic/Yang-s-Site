@@ -47,6 +47,7 @@ const Modal = styled.div`
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  text-align: center;
   /* Modal Content (Image) */
   .modal-content {
     margin: auto;
@@ -165,7 +166,7 @@ const Content = styled.div`
   }
 `;
 
-function Item({ name, image, price, discount, sold }) {
+function Item({ name, image, price, discount, sold, detail, url }) {
   const wrapper = useRef(null);
   const preview = useRef(null);
 
@@ -215,6 +216,12 @@ function Item({ name, image, price, discount, sold }) {
           onClick={e => e.stopPropagation()}
         />
         <div id="caption"></div>
+        {detail && Object.entries(detail).map(([k, v]) =>
+          <p key = {k}>
+            {k}: {v}
+          </p>
+        )}
+        {url && <a href={url} > Link </a>}
       </Modal>
       <Wrapper ref={wrapper}>
         {sold && <Sold />}

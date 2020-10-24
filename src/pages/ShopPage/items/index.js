@@ -12,9 +12,43 @@ import san from './san.jpg';
 import tape from './tape.jpg';
 import pins from './pins.jpg';
 import logo from './logo.png';
+import a7 from './a7.jpg';
+import oculus from './oculus.jpg';
+import monitor from './monitor.jpg';
 
 
 export const items = [
+  {
+    preview: a7,
+    name: '外星人主机 Aurora 7',
+    price: 2000,
+    discount: 0.7,
+    sold: false,
+    detail: {
+      CPU: 'CPU I7-8700',
+      GPU: 'GTX 1070',
+      RA: '16G',
+      DISK: '1T',
+      SSD: '256G'
+    },
+    url: 'https://www.bestbuy.com/site/alienware-aurora-r7-gaming-desktop-intel-core-i7-8700-16gb-memory-nvidia-gtx-1070-1tb-hdd-intel-optane-memory-epic-silver/6155310.p?skuId=6155310'
+  },
+  {
+    preview: oculus,
+    name: 'VR - Oculus Rift',
+    price: 600,
+    discount: 0.8,
+    sold: false,
+    url: 'https://www.ebay.com.au/itm/Oculus-Rift-Touch-Virtual-Reality-System-Extra-Sensor/143779865566?hash=item2179f2a3de:g:2PkAAOSw9bRfgUY2'
+  },
+  {
+    preview: monitor,
+    name: '外星人显示器 240HZ',
+    price: 600,
+    discount: 0.8,
+    sold: false,
+    url: 'https://www.amazon.com/Alienware-25-Gaming-Monitor-Height-Adjustable/dp/B0733YCKM5'
+  },
   {
     preview: Z200,
     name: 'Logitech Z200 音响',
@@ -112,7 +146,7 @@ export const items = [
     price: 27,
     discount: 0.25,
     sold: false
-  },{
+  }, {
     preview: logo,
     name: 'eggtronic',
     price: 27,

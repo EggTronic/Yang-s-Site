@@ -35,6 +35,8 @@ function ShopPage() {
           discount={item.discount}
           name={item.name}
           sold={item.sold}
+          detail={item.detail}
+          url={item.url}
         />)
       }
     </ShopPageWrapper>
