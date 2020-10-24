@@ -16,7 +16,7 @@ const HomePageWrapper = styled.div`
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: ${props => props.isSmallScreen ? 'center' : 'space-between'};
   overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
@@ -61,6 +61,7 @@ function HomePage() {
   const scene1 = useRef(null);
   const scene2 = useRef(null);
   const { width } = useWindowSize();
+  const isSmallScreen = width < 715;
 
   useEffect(() => {
     const parallaxInstance1 = new Parallax(scene1.current, {
@@ -76,17 +77,19 @@ function HomePage() {
   }, []);
 
   return (
-    <HomePageWrapper>
+    <HomePageWrapper
+      isSmallScreen={isSmallScreen}
+    >
       <Card
         url={logo}
-        width={width < 715 ? `${width-100}px` : '40.5vw'}
+        width={isSmallScreen ? `${width - 100}px` : '40.5vw'}
         height={'calc(90% - 52px)'}
-        minWidth={width < 715? `0px`: '600px'}
+        minWidth={isSmallScreen ? `0px` : '600px'}
       />
-      <LeftWrapper 
-        ref={scene1} 
-        width={width < 715 ? `${width-100}px` : '40.5vw'}
-        minWidth={width < 715? `0px`: '600px'}
+      <LeftWrapper
+        ref={scene1}
+        width={isSmallScreen ? `${width - 100}px` : '40.5vw'}
+        minWidth={isSmallScreen ? `0px` : '600px'}
       >
         <div data-depth="0.06">
           <Typist
@@ -109,10 +112,10 @@ function HomePage() {
           </Typist>
         </div>
       </LeftWrapper>
-      <RightWrapper 
+      <RightWrapper
         ref={scene2}
-        width={width < 715 ? `80vw` : '40.5vw'}
-        minWidth={width < 715? `0px`: '500px'}
+        width={isSmallScreen ? `80vw` : '40.5vw'}
+        minWidth={isSmallScreen ? `0px` : '500px'}
       >
         <div data-depth="0.5" >
           <Cube />

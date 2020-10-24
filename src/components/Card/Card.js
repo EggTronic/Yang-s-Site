@@ -7,6 +7,7 @@ const CardWrapper = styled(animated.div)`
   min-width: ${props => props.minWidth};
   height: ${props => props.height};
   ::before {
+    transition: all 0.5s linear;
     content: '';
     display: block;
     position: absolute;
@@ -18,7 +19,7 @@ const CardWrapper = styled(animated.div)`
     opacity: 0.6;
     background-image: ${props => 'url(' + props.url + ')'};;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
   :hover {
     ::before {
