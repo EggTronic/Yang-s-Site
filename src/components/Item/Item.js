@@ -174,9 +174,9 @@ function Item({ name, image, price, discount, sold, detail, url }) {
   const newPrice = (price * (1 - discount)).toFixed(2);
 
   const handleOpen = () => {
-    let modal = document.getElementById("modal");
-    let modalImg = document.getElementById("modalImg");
-    let captionText = document.getElementById("caption");
+    let modal = document.getElementById("modal-" + name);
+    let modalImg = document.getElementById(name);
+    let captionText = document.getElementById("caption-"+name);
 
     modal.style.display = "block";
     modalImg.src = preview.current.src;
@@ -184,7 +184,7 @@ function Item({ name, image, price, discount, sold, detail, url }) {
   };
 
   const handlClose = () => {
-    let modal = document.getElementById("modal");
+    let modal = document.getElementById("modal-" + name);
     modal.style.display = "none";
   };
 
@@ -198,10 +198,12 @@ function Item({ name, image, price, discount, sold, detail, url }) {
     ? fadeOut(wrapper.current)
     : fadeIn(wrapper.current);
 
+  console.log(detail);
+
   return (
     <>
       <Modal
-        id="modal"
+        id={"modal-" + name}
         onClick={handlClose}
       >
         <span
@@ -211,17 +213,17 @@ function Item({ name, image, price, discount, sold, detail, url }) {
         </span>
         <img
           className="modal-content"
-          id="modalImg"
+          id={name}
           alt={name}
           onClick={e => e.stopPropagation()}
         />
-        <div id="caption"></div>
+        <div style={{margin: '20px'}} id={"caption-" + name}></div>
         {detail && Object.entries(detail).map(([k, v]) =>
           <p key = {k}>
             {k}: {v}
           </p>
         )}
-        {url && <a href={url} > Link </a>}
+        {url && <a href={url} style={{padding: '20px'}} > Link </a>}
       </Modal>
       <Wrapper ref={wrapper}>
         {sold && <Sold />}

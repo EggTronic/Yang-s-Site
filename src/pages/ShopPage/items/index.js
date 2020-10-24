@@ -27,7 +27,7 @@ export const items = [
     detail: {
       CPU: 'CPU I7-8700',
       GPU: 'GTX 1070',
-      RA: '16G',
+      RAM: '16G',
       DISK: '1T',
       SSD: '256G'
     },
@@ -39,6 +39,7 @@ export const items = [
     price: 600,
     discount: 0.8,
     sold: false,
+    detail: {},
     url: 'https://www.ebay.com.au/itm/Oculus-Rift-Touch-Virtual-Reality-System-Extra-Sensor/143779865566?hash=item2179f2a3de:g:2PkAAOSw9bRfgUY2'
   },
   {
