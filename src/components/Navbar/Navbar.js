@@ -79,15 +79,19 @@ const MenuItem = styled.span`
 `;
 
 const StyledLink = styled(Link)`
-  :hover,
-  :focus {
-    outline: unset;
+  :hover {
     ${MenuItem} {
       background: white;
       border-radius:3px;
       span {
         color: black;
       }
+    }
+  }
+  :focus { 
+    outline: unset;
+    ${MenuItem}{
+      border-bottom: 2px solid white;
     }
   }
 `;
