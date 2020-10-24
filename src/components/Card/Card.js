@@ -6,13 +6,28 @@ const CardWrapper = styled(animated.div)`
   width: ${props => props.width};
   min-width: ${props => props.minWidth};
   height: ${props => props.height};
-  background-image: ${props => 'url(' + props.url + ')'};
-  background-size: cover;
-  background-position: center center;
-  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  ::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+    background-image: ${props => 'url(' + props.url + ')'};;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  :hover {
+    ::before {
+      opacity: 1;
+    }
+  }
   transition: box-shadow 0.5s;
   will-change: transform;
-  border: 15px solid white;
+  border: 5px solid white;
   position: absolute;
   z-index: 1;
   box-sizing: border-box;

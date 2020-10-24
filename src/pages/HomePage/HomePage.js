@@ -111,8 +111,8 @@ function HomePage() {
       </LeftWrapper>
       <RightWrapper 
         ref={scene2}
-        width={width < 715 ? `${width-100}px` : '40.5vw'}
-        minWidth={width < 715? `0px`: '600px'}
+        width={width < 715 ? `80vw` : '40.5vw'}
+        minWidth={width < 715? `0px`: '500px'}
       >
         <div data-depth="0.5" >
           <Cube />

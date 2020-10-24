@@ -56,7 +56,8 @@ const Logo = styled.img`
   border-radius: 50%;
   transition: all 1s;
   transform: scale(0.7,0.7);
-  &:hover{
+  :hover, 
+  :focus{
     transform: scale(0.9);
   }
   z-index:10;
@@ -72,16 +73,23 @@ const MenuItem = styled.span`
   vertical-align: top;
   margin-left: ${props => props.menuOpen ? '40px' : '30px'};
   cursor: pointer;
-  border-bottom: ${props => props.isFocus? '2px solid white': '2px solid transparent'} ;
+  border-bottom: ${props => props.isFocus ? '2px solid white' : '2px solid transparent'} ;
   transition: all 1s linear;
-  &:hover{
-    background: white;
-    border-radius:3px;
-    span {
-      color: black;
+  padding: 0px 10px;
+`;
+
+const StyledLink = styled(Link)`
+  :hover,
+  :focus {
+    outline: unset;
+    ${MenuItem} {
+      background: white;
+      border-radius:3px;
+      span {
+        color: black;
+      }
     }
   }
-  padding: 0px 10px;
 `;
 
 const TextWrapper = styled.span`
@@ -99,11 +107,11 @@ function Navbar() {
       <Header>
         {Object.keys(routerPath).map(k => {
           return (
-            <Link to={routerPath[k].path} key={k}>
+            <StyledLink to={routerPath[k].path} key={k}>
               <MenuItem isFocus={location.pathname === routerPath[k].path}>
                 <TextWrapper>{routerPath[k].name}</TextWrapper>
               </MenuItem>
-            </Link>
+            </StyledLink>
           );
         })}
       </Header>
@@ -115,8 +123,8 @@ function Navbar() {
       <MenuWrapper menuOpen={menuOpen}>
         {Object.keys(routerPath).map(k => {
           return (
-            <Link 
-              to={routerPath[k].path} 
+            <Link
+              to={routerPath[k].path}
               key={k}
               onClick={() => toggleMenuOpen(false)}
             >

@@ -32,6 +32,10 @@ const Wrapper = styled.div`
   &:hover {
     > div:nth-child(1)  {
       transform: rotateY(180deg);
+      ::after {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
     z-index: 1;
     --border-width: 50px;
@@ -74,6 +78,7 @@ const Inner = styled.div`
     z-index: -1;
     width: calc(100% + var(--border-width) * 2);
     height: calc(100% + var(--border-width) * 2);
+    transform: scale(0);
     background: linear-gradient(
       60deg,
       hsl(134, 85%, 66%),
@@ -82,6 +87,8 @@ const Inner = styled.div`
     background-size: 300% 300%;
     background-position: 0 50%;
     animation: ${moveGradient} 4s alternate infinite;
+    transition: all 0.95s linear;
+    opacity:0;
   }
 `;
 

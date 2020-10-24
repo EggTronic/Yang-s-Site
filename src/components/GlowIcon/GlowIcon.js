@@ -8,9 +8,6 @@ const LI = styled.li`
   margin-bottom: 15px;
 `;
 
-const A = styled.a`
-`
-
 const I = styled.i`
   list-style: none;
   margin: 0 15px;
@@ -24,15 +21,8 @@ const I = styled.i`
   font-size: 50px;
   color: rgba(255,255,255,0.7);
   transition: .5s;
-  &:hover::before {
-    transform: scale(1.1);
-  }
-  &:hover {
-    color: #fff;
-    box-shadow: 0 0 15px #fff;
-    text-shadow: 0 0 5px #fff;
-  }
-  &::before {
+  
+  ::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -42,7 +32,27 @@ const I = styled.i`
     transition: .5s;
     transform: scale(.9);
   }
-`
+`;
+
+const A = styled.a`
+  :focus, 
+  :hover {
+    outline: none;
+    ${I}::before {
+      transform: scale(1.1);
+    }
+    ${I}::before {
+      transform: scale(1.1);
+    }
+    ${I} {
+      color: #fff;
+      box-shadow: 0 0 15px #fff;
+      text-shadow: 0 0 5px #fff;
+    }
+  }
+`;
+
+
 
 function GlowIcon({ herf, className }) {
   return (

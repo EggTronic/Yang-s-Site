@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Progress from '../../components/Progress/Progress';
 import FlipCard from '../../components/FlipCard/FlipCard';
 import GlowIcon from '../../components/GlowIcon/GlowIcon';
 import unimelb from '../../assets/images/unimelb.png';
@@ -157,7 +158,34 @@ function AboutPage() {
           <SectionHeader>
             <GlowIcon className='fas fa-bolt' />
           </SectionHeader>
-          <h1>Typescript</h1>
+          <Progress
+            percent={90}
+            name='JavaScript'
+            iconCode='\f3b8'
+            iconFamily='Brands'
+            iconWeight={400}
+          />
+          <Progress
+            percent={80}
+            name='Java'
+            iconCode='\f4e4'
+            iconFamily='Brands'
+            iconWeight={400}
+          />
+          <Progress
+            percent={90}
+            name='React'
+            iconCode='\f41b'
+            iconFamily='Brands'
+            iconWeight={400}
+          />
+          <Progress
+            percent={75}
+            name='Docker'
+            iconCode='\f395'
+            iconFamily='Brands'
+            iconWeight={400}
+          />
         </div>
       </FlipCard>
       <FlipCard height='100%' width='400px'>

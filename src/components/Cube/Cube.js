@@ -21,8 +21,6 @@ const Wrapper = styled.div`
 const MyCanvas = styled.canvas`
   width: 20vw;
   height: 20vw;
-  min-height: 400px;
-  min-width: 400px;
   position: absolute;
 `;
 
@@ -30,28 +28,26 @@ const Inner = styled.div`
   transform-style: preserve-3d;
   width: 20vw;
   height: 20vw;
-  min-height: 400px;
-  min-width: 400px;
   margin: auto;
   position: relative;
   animation: ${Rotate3d} 40s linear infinite;
   img:nth-child(1){
-    transform: rotateY(0deg) translateZ(max(10vw, 200px));
+    transform: rotateY(0deg) translateZ(max(10vw, 150px));
   }
   img:nth-child(2){
-    transform: rotateY(90deg) translateZ(max(10vw, 200px));
+    transform: rotateY(90deg) translateZ(max(10vw, 150px));
   }
   img:nth-child(3){
-    transform: rotateY(180deg) translateZ(max(10vw, 200px));
+    transform: rotateY(180deg) translateZ(max(10vw, 150px));
   }
   img:nth-child(4){
-    transform: rotateY(-90deg) translateZ(max(10vw, 200px));
+    transform: rotateY(-90deg) translateZ(max(10vw, 150px));
   }
   img:nth-child(5){
-    transform: rotateX(90deg) translateZ(max(10vw, 200px));
+    transform: rotateX(90deg) translateZ(max(10vw, 150px));
   }
   img:nth-child(6){
-    transform: rotateX(-90deg) translateZ(max(10vw, 200px));
+    transform: rotateX(-90deg) translateZ(max(10vw, 150px));
   }
   canvas:nth-child(7){
     transform: rotateY(90deg);
@@ -69,8 +65,6 @@ const Side = styled.img`
   opacity: ${props => props.opacity};
   width: 20vw;
   height: 20vw;
-  min-height: 400px;
-  min-width: 400px;
   transition: all 0.4s ease-in-out;
   border: 1px solid rgba(255,255,255,0.1);
 `;
