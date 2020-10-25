@@ -76,12 +76,12 @@ function AboutPage() {
     <AboutPageWrapper>
       <FlipCard height='100%' width='400px'>
         <FrontWrapper>
-          <GlowIcon className='fas fa-user-secret' />
+          <GlowIcon className='fas fa-user-secret' width='80px' height='80px' />
           <h1>General</h1>
         </FrontWrapper>
         <BackWrapper>
           <SectionHeader>
-            <GlowIcon className='fas fa-user-secret' />
+            <GlowIcon className='fas fa-user-secret' width='80px' height='80px' isGlow={true} />
           </SectionHeader>
           <SectionWrapper>
             <Section background='#373A40' textAlign='left'>
@@ -104,14 +104,17 @@ function AboutPage() {
           </SectionWrapper>
         </BackWrapper>
       </FlipCard>
-      <FlipCard height='100%' width='400px'>
+      <FlipCard
+        height='100%'
+        width='400px'
+      >
         <FrontWrapper>
-          <GlowIcon className='fas fa-graduation-cap' />
+          <GlowIcon className='fas fa-graduation-cap' width='80px' height='80px' />
           <h1>Education</h1>
         </FrontWrapper>
         <BackWrapper>
           <SectionHeader>
-            <GlowIcon className='fas fa-graduation-cap' />
+            <GlowIcon className='fas fa-graduation-cap' width='80px' height='80px' isGlow={true} />
           </SectionHeader>
           <SectionWrapper>
             <Section background='#f38181'>
@@ -151,12 +154,12 @@ function AboutPage() {
       </FlipCard>
       <FlipCard height='100%' width='400px'>
         <FrontWrapper>
-          <GlowIcon className='fas fa-bolt' />
+          <GlowIcon className='fas fa-bolt' width='80px' height='80px' />
           <h1>Skill</h1>
         </FrontWrapper>
         <div>
           <SectionHeader>
-            <GlowIcon className='fas fa-bolt' />
+            <GlowIcon className='fas fa-bolt' width='80px' height='80px' isGlow={true} />
           </SectionHeader>
           <Progress
             percent={90}
@@ -190,24 +193,24 @@ function AboutPage() {
       </FlipCard>
       <FlipCard height='100%' width='400px'>
         <FrontWrapper>
-          <GlowIcon className='fas fa-atom' />
+          <GlowIcon className='fas fa-atom' width='80px' height='80px' />
           <h1>Experience</h1>
         </FrontWrapper>
         <div>
           <SectionHeader>
-            <GlowIcon className='fas fa-atom' />
+            <GlowIcon className='fas fa-atom' width='80px' height='80px' isGlow={true} />
           </SectionHeader>
           <h1>React</h1>
         </div>
       </FlipCard>
       <FlipCard height='100%' width='400px'>
         <FrontWrapper>
-          <GlowIcon className='fas fa-headphones-alt' />
+          <GlowIcon className='fas fa-headphones-alt' width='80px' height='80px' />
           <h1>Music</h1>
         </FrontWrapper>
         <div>
           <SectionHeader>
-            <GlowIcon className='fas fa-headphones-alt' />
+            <GlowIcon className='fas fa-headphones-alt' width='80px' height='80px' isGlow={true} />
           </SectionHeader>
           <Section background='white'>
             <Img src={monstercat} width='70%' alt='monstercat' />
@@ -219,12 +222,12 @@ function AboutPage() {
       </FlipCard>
       <FlipCard height='100%' width='400px'>
         <FrontWrapper>
-          <GlowIcon className='fas fa-video' />
+          <GlowIcon className='fas fa-video' width='80px' height='80px' />
           <h1>Film</h1>
         </FrontWrapper>
         <div>
           <SectionHeader>
-            <GlowIcon className='fas fa-video' />
+            <GlowIcon className='fas fa-video' width='80px' height='80px' isGlow={true} />
           </SectionHeader>
           <h1>Pacific Rim</h1>
         </div>
@@ -243,12 +246,12 @@ function AboutPage() {
       </FlipCard>
       <FlipCard height='100%' width='400px'>
         <FrontWrapper>
-          <GlowIcon className='fas fa-gamepad' />
+          <GlowIcon className='fas fa-gamepad' width='80px' height='80px' />
           <h1>Game</h1>
         </FrontWrapper>
         <div>
           <SectionHeader>
-            <GlowIcon className='fas fa-gamepad' />
+            <GlowIcon className='fas fa-gamepad' width='80px' height='80px' isGlow={true} />
           </SectionHeader>
           <h1>Dota2</h1>
         </div>

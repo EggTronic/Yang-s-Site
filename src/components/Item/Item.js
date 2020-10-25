@@ -198,8 +198,6 @@ function Item({ name, image, price, discount, sold, detail, url }) {
     ? fadeOut(wrapper.current)
     : fadeIn(wrapper.current);
 
-  console.log(detail);
-
   return (
     <>
       <Modal

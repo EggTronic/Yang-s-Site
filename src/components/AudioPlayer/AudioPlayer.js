@@ -11,7 +11,6 @@ const Icon = styled.i`
 `;
 
 const PlayPauseBtn = styled(Icon)`
-  cursor: pointer;
   margin-right: 20px;
   transition: all 0.2s;
   color: rgba(255,255,255,0.8);
@@ -94,7 +93,7 @@ const Bar = styled.input`
     border: 0;
     width: 100%;
     height: 6px;
-    cursor: pointer;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
   }
   &::-webkit-slider-thumb {
     margin-top: -5.85px;
@@ -102,7 +101,7 @@ const Bar = styled.input`
     height: 20px;
     background: rgba(0, 0, 0, 0.5);
     border: 2.5px solid #ffffff;
-    cursor: pointer;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
     -webkit-appearance: none;
     &:focus::-webkit-slider-runnable-track {
       background: #141414;

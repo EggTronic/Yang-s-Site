@@ -6,7 +6,7 @@
   align-items: center;
   background-color: transparent;
   position: absolute;
-  top:-8px;
+  top:-5px;
   left: 0px;
   z-index: -1;
 }
@@ -29,23 +29,18 @@
   }
 }
 
-.blue-orbit {
-  width: 120px;
-  height: 120px;
-  border: 2px solid white;
-  animation: spin3D 6s linear .2s infinite;
-}
 
-.green-orbit {
-  width: 100px;
-  height: 100px;
+
+.large-orbit {
+  width: 70px;
+  height: 70px;
   border: 2px solid white;
   animation: spin3D 4s linear 0s infinite;
 }
 
-.white-orbit {
-  width: 60px;
-  height: 60px;
+.short-orbit {
+  width: 55px;
+  height: 55px;
   border: 2px solid #ffffff;
   animation: spin3D 10s linear 0s infinite;
 }

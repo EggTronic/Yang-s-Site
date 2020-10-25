@@ -23,18 +23,26 @@ function Sider() {
       <GlowIcon
         className='fab fa-github'
         herf='https://github.com/EggTronic'
+        height='80px'
+        width='80px'
       />
       <GlowIcon
         className='fab fa-npm'
         herf='https://www.npmjs.com/~eggtronic'
+        height='80px'
+        width='80px'
       />
       <GlowIcon
         className='fab fa-facebook'
         herf='https://www.facebook.com/profile.php?id=100027517839124'
+        height='80px'
+        width='80px'
       />
       <GlowIcon
         className='fas fa-guitar'
         herf='https://music.163.com/#/artist?id=12077118'
+        height='80px'
+        width='80px'
       />
     </UL>
   );

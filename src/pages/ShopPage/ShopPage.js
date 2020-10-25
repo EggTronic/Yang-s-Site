@@ -25,7 +25,7 @@ function ShopPage() {
       <SectionHeader background={
         'linear-gradient( to bottom, rgba(42,71,94,1.0) 5%, rgba(42,71,94,0.0) 70%);'
       }>
-        <GlowIcon className="fas fa-store" />
+        <GlowIcon className="fas fa-store"  width='80px' height='80px' />
       </SectionHeader>
       {items.map((item, i) =>
         <Item

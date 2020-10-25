@@ -16,7 +16,7 @@ const HomePageWrapper = styled.div`
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: ${props => props.isSmallScreen ? 'center' : 'space-between'};
+  justify-content: ${props => props.isVertical ? 'center' : 'space-between'};
   overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
@@ -62,6 +62,7 @@ function HomePage() {
   const scene2 = useRef(null);
   const { width } = useWindowSize();
   const isSmallScreen = width < 715;
+  const isVertical = width < 1293;
 
   useEffect(() => {
     const parallaxInstance1 = new Parallax(scene1.current, {
@@ -70,15 +71,21 @@ function HomePage() {
       invertX: true
     });
     const parallaxInstance2 = new Parallax(scene2.current, {
-      relativeInput: true
+      relativeInput: true,
+      
     });
     parallaxInstance1.friction(.2, .2);
     parallaxInstance2.friction(.2, .2);
-  }, []);
+    if (isVertical) parallaxInstance2.disable();
+    return () => {
+      parallaxInstance1.destroy();
+      parallaxInstance2.destroy();
+    }
+  }, [isVertical]);
 
   return (
     <HomePageWrapper
-      isSmallScreen={isSmallScreen}
+      isVertical={isVertical}
     >
       <Card
         url={logo}
@@ -117,7 +124,7 @@ function HomePage() {
         width={isSmallScreen ? `80vw` : '40.5vw'}
         minWidth={isSmallScreen ? `0px` : '500px'}
       >
-        <div data-depth="0.5" >
+        <div data-depth={'0.5'} >
           <Cube />
         </div>
       </RightWrapper>

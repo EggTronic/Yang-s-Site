@@ -10,18 +10,18 @@ const LI = styled.li`
 
 const I = styled.i`
   list-style: none;
-  margin: 0 15px;
   position: relative; 
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   text-align: center;
-  line-height: 83px;
+  line-height: 100%;
   border-radius: 50%;
   font-size: 50px;
-  color: rgba(255,255,255,0.7);
   transition: .5s;
-  
+  color: ${props => props.isGlow ? '#fff' : 'rgba(255,255,255,0.7)'};
+  text-shadow: ${props => props.isGlow ? '0 0 5px #fff' : ''};
+
   ::before {
     position: absolute;
     top: 0;
@@ -31,6 +31,9 @@ const I = styled.i`
     border-radius: 50%;
     transition: .5s;
     transform: scale(.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -46,19 +49,31 @@ const A = styled.a`
     }
     ${I} {
       color: #fff;
-      box-shadow: 0 0 15px #fff;
+      box-shadow: 0 0 ${props => props.withHalo ? '15px' : '0px'} #fff;
       text-shadow: 0 0 5px #fff;
     }
   }
 `;
 
-
-
-function GlowIcon({ herf, className }) {
+function GlowIcon({
+  herf,
+  className,
+  height,
+  width,
+  withHalo = false,
+  isGlow = false
+}) {
   return (
-    <LI>
-      <A href={herf} target="_blank">
-        <I className={className} />
+    <LI style={{ height: height, width: width }}>
+      <A
+        href={herf}
+        target="_blank"
+        withHalo={withHalo}
+      >
+        <I
+          className={className}
+          isGlow={isGlow}
+        />
       </A>
     </LI>
 
