@@ -2,9 +2,8 @@
 ![](./SAMPLES/demo.gif)
 
 ## ToDo
-- [ ] themeProvider
-- [ ] starwar zone
-- [ ] eggtap
+- [ ] Project Page
+- [ ] Music Page
 
 ## License
 Copyright (C) 2020 EggTronic

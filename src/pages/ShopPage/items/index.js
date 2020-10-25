@@ -23,7 +23,7 @@ export const items = [
     name: '外星人主机 Aurora 7',
     price: 2000,
     discount: 0.7,
-    sold: false,
+    sold: true,
     detail: {
       CPU: 'CPU I7-8700',
       GPU: 'GTX 1070',
@@ -39,7 +39,6 @@ export const items = [
     price: 600,
     discount: 0.8,
     sold: false,
-    detail: {},
     url: 'https://www.ebay.com.au/itm/Oculus-Rift-Touch-Virtual-Reality-System-Extra-Sensor/143779865566?hash=item2179f2a3de:g:2PkAAOSw9bRfgUY2'
   },
   {
@@ -47,7 +46,7 @@ export const items = [
     name: '外星人显示器 240HZ',
     price: 600,
     discount: 0.8,
-    sold: false,
+    sold: true,
     url: 'https://www.amazon.com/Alienware-25-Gaming-Monitor-Height-Adjustable/dp/B0733YCKM5'
   },
   {
@@ -62,7 +61,7 @@ export const items = [
     name: 'AKG K845BT 蓝牙耳机',
     price: 300,
     discount: 0.85,
-    sold: false
+    sold: true
   },
   {
     preview: headphone,
@@ -83,14 +82,14 @@ export const items = [
     name: '小米接线板',
     price: 10,
     discount: 0.6,
-    sold: false
+    sold: true
   },
   {
     preview: keyboard,
     name: '酷冷至尊 Pro S - 茶轴',
     price: 120,
     discount: 0.9,
-    sold: false
+    sold: true
   },
   {
     preview: mic,
@@ -111,21 +110,21 @@ export const items = [
     name: '小吸尘器',
     price: 25,
     discount: 0.8,
-    sold: false
+    sold: true
   },
   {
     preview: meidi,
     name: '美的 - 多功能电饭煲',
     price: 160,
     discount: 0.9,
-    sold: false
+    sold: true
   },
   {
     preview: san,
     name: '自开雨伞',
     price: 20,
     discount: 0.75,
-    sold: false
+    sold: true
   },
   {
     preview: tape,
