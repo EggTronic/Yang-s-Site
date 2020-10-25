@@ -31,7 +31,7 @@ const HomePageWrapper = styled.div`
 const LeftWrapper = styled.div`
   position: relative;
   width: ${props => props.width};
-  min-width: ${props => props.minWidth};
+  min-width: ${props => props.minwidth};
   height: calc(90% - 20px);
   box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
@@ -50,7 +50,7 @@ const LeftWrapper = styled.div`
 
 const RightWrapper = styled.div`
   width: ${props => props.width};
-  min-width: ${props => props.minWidth};
+  min-width: ${props => props.minwidth};
   height: calc(90% - 20px);
   display: flex;
   justify-content: center;
@@ -91,12 +91,12 @@ function HomePage() {
         url={logo}
         width={isSmallScreen ? `${width - 100}px` : '40.5vw'}
         height={'calc(90% - 52px)'}
-        minWidth={isSmallScreen ? `0px` : '600px'}
+        minwidth={isSmallScreen ? `0px` : '600px'}
       />
       <LeftWrapper
         ref={scene1}
         width={isSmallScreen ? `${width - 100}px` : '40.5vw'}
-        minWidth={isSmallScreen ? `0px` : '600px'}
+        minwidth={isSmallScreen ? `0px` : '600px'}
       >
         <div data-depth="0.06">
           <Typist
@@ -122,7 +122,7 @@ function HomePage() {
       <RightWrapper
         ref={scene2}
         width={isSmallScreen ? `80vw` : '40.5vw'}
-        minWidth={isSmallScreen ? `0px` : '500px'}
+        minwidth={isSmallScreen ? `0px` : '500px'}
       >
         <div data-depth={'0.5'} >
           <Cube />

@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring';
 
 const CardWrapper = styled(animated.div)`
   width: ${props => props.width};
-  min-width: ${props => props.minWidth};
+  min-width: ${props => props.minwidth};
   height: ${props => props.height};
   ::before {
     transition: all 0.5s linear;
@@ -37,13 +37,13 @@ const CardWrapper = styled(animated.div)`
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 4) / 20, 1.1];
 const trans = (x, y, s) => `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-function Card({ width, height, url, minWidth }) {
+function Card({ width, height, url, minwidth }) {
   const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }));
   return (
     <CardWrapper
       width={width}
       height={height}
-      minWidth={minWidth}
+      minwidth={minwidth}
       url={url}
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}

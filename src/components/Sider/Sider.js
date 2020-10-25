@@ -6,7 +6,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 const UL = styled.ul`
   position:fixed;
   width: 60px;
-  right: 20px;
+  right: -5px;
   top: 240px;
   margin: 0;
   padding: 0;
