@@ -2,6 +2,8 @@
 ![](./SAMPLES/demo.gif)
 
 ## ToDo
+- [ ] light theme (https://codepen.io/visnuravichandran/pen/GRZQVdP)
+- [ ] nav animation (https://codepen.io/karlovidek/pen/aNYWKE)
 - [ ] Project Page
 - [ ] Music Page
 

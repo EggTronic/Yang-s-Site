@@ -6,7 +6,7 @@ import { SectionHeader } from '../AboutPage/AboutPage';
 import { items } from './items';
 
 const ShopPageWrapper = styled.div`
-  position: relative;
+  position: absolute;
   box-sizing: border-box;
   height: calc(99vh - 164px);
   width: 90vw;

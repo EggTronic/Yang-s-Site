@@ -1,7 +1,7 @@
 export const routerPath = {
   home: { name: "WELCOME", path: "/" },
   about: { name: "ABOUT ME", path: "/about" },
-  shop: { name: "SHOP", path: "/shop" },
+  project: { name: "PROJECT", path: "/project" },
   music: { name: "MUSIC", path: "/music" },
-  project: { name: "PROJECT", path: "/project" }
+  shop: { name: "SHOP", path: "/shop" },
 };

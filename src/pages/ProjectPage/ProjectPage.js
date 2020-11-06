@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
+import ProjectSection from "../../components/ProjectSection/ProjectSection";
 
 const ProjectPageWrapper = styled.div`
   position: relative;
@@ -7,31 +8,32 @@ const ProjectPageWrapper = styled.div`
   height: calc(99vh - 164px);
   width: 90vw;
   top: 100px;
-  background: rgba(111,111,111,0.4);
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
   canvas {
     display: block;
   }
 `;
 
-
 function ProjectPage() {
   const wrapper = useRef(null);
   useEffect(() => {
-    const audio = document.getElementById('audio');
-    audio.pause();
+    // const audio = document.getElementById('audio');
+    // audio.pause();
   }, []);
   return (
     <ProjectPageWrapper ref={wrapper}>
-      Here is my recreation of mikutap - in progress :D
-      <iframe
-        src="https://eggtronic.github.io/EggTap/"
-        title="EggTap"
-        height="100%"
-        width="99.8%"
-      >
-      </iframe>
+      <ProjectSection>
+        <iframe
+          src="https://eggtronic.github.io/EggTap/"
+          title="EggTap"
+          height="100%"
+          width="30%"
+        ></iframe>
+      </ProjectSection>
     </ProjectPageWrapper>
   );
 }
