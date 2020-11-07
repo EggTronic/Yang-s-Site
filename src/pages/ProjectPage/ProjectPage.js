@@ -13,6 +13,7 @@ const ProjectPageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   overflow-y: auto;
+  overflow-x:hidden;
   canvas {
     display: block;
   }
@@ -25,14 +26,14 @@ function ProjectPage() {
     // audio.pause();
   }, []);
   return (
-    <ProjectPageWrapper ref={wrapper}>
+    <ProjectPageWrapper className="test" ref={wrapper}>
       <ProjectSection>
-        <iframe
+        {/* <iframe
           src="https://eggtronic.github.io/EggTap/"
           title="EggTap"
           height="100%"
           width="30%"
-        ></iframe>
+        ></iframe> */}
       </ProjectSection>
     </ProjectPageWrapper>
   );

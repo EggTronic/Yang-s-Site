@@ -137,7 +137,7 @@ function AudioPlayer({ setFrequency }) {
 
   useEffect(() => {
     audio.current.volume = 0.5;
-    audio.current.play();
+    // audio.current.play();
     audio.current.onended = () => {
       setPosition(0);
       setPlaying(false);
