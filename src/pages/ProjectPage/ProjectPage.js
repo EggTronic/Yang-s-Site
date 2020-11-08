@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ProjectSection from "../../components/ProjectSection/ProjectSection";
 
@@ -10,7 +10,6 @@ const ProjectPageWrapper = styled.div`
   top: 100px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
   overflow-y: auto;
   overflow-x:hidden;
@@ -20,13 +19,12 @@ const ProjectPageWrapper = styled.div`
 `;
 
 function ProjectPage() {
-  const wrapper = useRef(null);
   useEffect(() => {
     // const audio = document.getElementById('audio');
     // audio.pause();
   }, []);
   return (
-    <ProjectPageWrapper className="test" ref={wrapper}>
+    <ProjectPageWrapper>
       <ProjectSection>
         {/* <iframe
           src="https://eggtronic.github.io/EggTap/"

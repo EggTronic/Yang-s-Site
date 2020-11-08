@@ -1,20 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import gsap, { TimelineLite, Linear } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { TeleportIn, TeleportOut } from "../../utils";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 90vw;
+  height: calc(99vh - 164px);
   display: flex;
   /* flex-direction: column; */
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   perspective: 1000;
-  perspective-origin: center;
+  position: relative;
 `;
 
 const Section = styled.div`
@@ -22,105 +20,61 @@ const Section = styled.div`
   height: 0;
   border-color: white;
   border-style: solid;
+  border-width: 0;
+  position: absolute;
 `;
 
+const Control = styled.button`
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: white;
+  z-index: 1;
+`;
+
+const ForwardBtn = styled(Control)`
+  right: 20px;
+`;
+
+const BackwardBtn = styled(Control)`
+  left: 20px;
+`;
+
+const sectionClass = "project-section";
+
 function ProjectSectionWrapper({ children }) {
-  const section = useRef(null);
-  const section2 = useRef(null);
+  const [index, setIndex] = useState(0);
   const wrapper = useRef(null);
 
   useEffect(() => {
-    const addScrollTrigger = () => {
-      const tl2 = gsap.timeline();
-      // yes, we can add it to an entire timeline!
+    const sectionArray = document.getElementsByClassName(sectionClass);
+    wrapper.current.sectionArray = sectionArray;
+    TeleportIn(sectionArray[index], wrapper.current);
+  }, [index]);
 
-      tl2
-        .to(section.current, {
-          scrollTrigger: {
-            scroller: ".test",
-            trigger: document.getElementsByClassName("section")[0],
-            markers: true,
-            pin: true,
-            start: "top top", // when the top of the trigger hits the top of the viewport
-            end: "+=1500", // end after scrolling 500px beyond the start
-            scrub: 0.5, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-          },
-          rotationY: 660,
-          width: 0,
-          height: 0,
-        })
-        .to(section2.current, {
-          scrollTrigger: {
-            scroller: ".test",
-            trigger: document.getElementsByClassName("section2")[0],
-            markers: true,
-            pin: true,
-            start: "top top", // when the top of the trigger hits the top of the viewport
-            end: "+=1500", // end after scrolling 500px beyond the start
-            scrub: 0.5, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-          },
-          rotationY: 360,
-          width: 1000,
-          height: 1000,
-        });
-    };
+  const forward = () => {
+    const sectionArray = wrapper.current.sectionArray;
+    if (!sectionArray || index >= sectionArray.length - 1) return;
+    TeleportOut(sectionArray[index], wrapper.current);
+    setIndex((i) => i + 1);
+  };
 
-    const tl = new TimelineLite();
-    tl.to(section.current, {
-      duration: 2,
-      width: wrapper.current.clientWidth * 0.2,
-      height: 0,
-      borderTopWidth: 1,
-      borderBottomWidth: 1,
-    })
-      .to(section.current, {
-        duration: 2,
-        width: wrapper.current.clientWidth * 0.2,
-        height: wrapper.current.clientHeight * 0.1,
-        borderTopWidth: 3,
-        borderBottomWidth: 3,
-      })
-      .to(section.current, {
-        duration: 0.1,
-        background: "white",
-      })
-      .to(section.current, {
-        duration: 0.6,
-        width: wrapper.current.clientWidth * 0.55,
-        height: wrapper.current.clientHeight * 0.55,
-        background: "rgba(255,255,255,0.5)",
-        ease: Linear.easeNone,
-      })
-      .to(section.current, {
-        duration: 0.6,
-        width: wrapper.current.clientWidth * 0.9,
-        height: wrapper.current.clientHeight * 0.9,
-        background: "rgba(255,255,255,0)",
-        borderRightWidth: 3,
-        borderLeftWidth: 3,
-        ease: Linear.easeNone,
-      }).to(section.current, {
-      duration: 1,
-      width: wrapper.current.clientWidth,
-      height: wrapper.current.clientHeight,
-      ease: Linear.easeNone,
-    }).to(section2.current, {
-      duration: 1,
-      width: wrapper.current.clientWidth,
-      height: wrapper.current.clientHeight,
-      ease: Linear.easeNone,
-      onComplete: addScrollTrigger,
-    });
-  }, []);
+  const backward = () => {
+    const sectionArray = wrapper.current.sectionArray;
+    if (!sectionArray || index <= 0) return;
+    TeleportOut(sectionArray[index], wrapper.current);
+    setIndex((i) => i - 1);
+  };
 
   return (
-    <Wrapper ref={wrapper} className="wrapper1">
-      <Section className="section" ref={section}>
+    <Wrapper ref={wrapper}>
+      <ForwardBtn onClick={forward} />
+      <BackwardBtn onClick={backward} />
+      <Section className={sectionClass}>{children}</Section>
+      <Section className={sectionClass}>{children}</Section>
+      {/* <Section className="section2" ref={section2}>
         {children}
-      </Section>
-      <Section className="section2" ref={section2}>
-        {children}
-      </Section>
+      </Section> */}
     </Wrapper>
   );
 }
